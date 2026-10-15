@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayşegül Nalkesen — Software Engineering & GDG Organization</title>
+  <meta name="description" content="Ayşegül Nalkesen — Software Engineering student at Kayseri University, GDG on Campus Organizing Team Member, athlete, Erasmus Pupil Quality Label holder.">
+  <meta name="theme-color" content="#0e0f12">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      /* Surfaces (Material Dark) */
+      --bg: #0e0f12;
+      --surface-1: #16181d;
+      --surface-2: #1d2026;
+      --surface-3: #262a32;
+      --border: rgba(255, 255, 255, 0.07);
+      --border-strong: rgba(255, 255, 255, 0.14);
+
+      /* Google Core Colors */
+      --g-blue: #4285f4;
+      --g-red: #ea4335;
+      --g-yellow: #fbbc04;
+      --g-green: #34a853;
+
+      /* Google Dark Mode Tones */
+      --blue: #8ab4f8;
+      --red: #f28b82;
+      --yellow: #fdd663;
+      --green: #81c995;
+
+      --text: #c4c7c5;
+      --text-bright: #e8eaed;
+      --text-muted: #9aa0a6;
+      --text-dim: #6b7178;
+
+      --font-sans: 'Google Sans', 'Outfit', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --r-sm: 8px;
+      --r-md: 14px;
+      --r-lg: 22px;
+      --r-pill: 999px;
+
+      --accent: var(--blue);
+      --accent-solid: var(--g-blue);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--surface-3) var(--bg); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--g-blue); }
+    ::selection { background: rgba(66, 133, 244, 0.35); color: #fff; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(600px circle at 8% 10%, rgba(66, 133, 244, 0.10), transparent 60%),
+        radial-gradient(500px circle at 92% 18%, rgba(234, 67, 53, 0.07), transparent 60%),
+        radial-gradient(550px circle at 85% 85%, rgba(52, 168, 83, 0.07), transparent 60%),
+        radial-gradient(500px circle at 12% 90%, rgba(251, 188, 4, 0.06), transparent 60%);
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+    }
+
+    #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    .wrap { position: relative; z-index: 1; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    .g-stripe { display: flex; height: 4px; width: 100%; }
+    .g-stripe span { flex: 1; }
+    .g-stripe span:nth-child(1) { background: var(--g-blue); }
+    .g-stripe span:nth-child(2) { background: var(--g-red); }
+    .g-stripe span:nth-child(3) { background: var(--g-yellow); }
+    .g-stripe span:nth-child(4) { background: var(--g-green); }
+
+    /* NAVBAR */
+    .nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(14, 15, 18, 0.78);
+      backdrop-filter: blur(20px) saturate(140%); -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1140px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--text-bright); text-decoration: none; font-weight: 700; font-size: 16px; letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+    .nav-logo svg { width: 34px; height: 22px; flex-shrink: 0; }
+    .nav-logo small { display: block; font-size: 11px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.02em; line-height: 1.1; }
+    .nav-logo .txt { line-height: 1.15; }
+
+    .nav-links { display: flex; gap: 2px; align-items: center; }
+    .nav-a {
+      position: relative;
+      color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500;
+      padding: 8px 13px; border-radius: var(--r-pill); transition: color .2s, background .2s;
+    }
+    .nav-a:hover { color: var(--text-bright); background: rgba(255, 255, 255, 0.06); }
+    .nav-a.active { color: var(--blue); background: rgba(138, 180, 248, 0.12); }
+
+    .nav-actions { display: flex; gap: 8px; align-items: center; }
+    .nav-lang {
+      font-size: 13px; font-weight: 600;
+      background: transparent; border: 1px solid var(--border-strong); color: var(--text-bright);
+      padding: 7px 14px; border-radius: var(--r-pill); text-decoration: none; transition: all .2s;
+    }
+    .nav-lang:hover { border-color: var(--blue); color: var(--blue); }
+    .nav-cv-btn {
+      font-size: 13px; font-weight: 600;
+      background: var(--blue); color: #062e6f;
+      padding: 8px 16px; border-radius: var(--r-pill); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 7px; transition: all .2s;
+    }
+    .nav-cv-btn:hover { background: #aecbfa; box-shadow: 0 4px 18px rgba(138, 180, 248, 0.35); }
+
+    .hamburger {
+      display: none; background: none; border: 1px solid var(--border-strong); color: var(--text-bright);
+      font-size: 17px; width: 40px; height: 40px; border-radius: var(--r-pill); cursor: pointer;
+    }
+
+    /* HERO */
+    .hero { padding: 80px 0 40px; min-height: calc(100vh - 68px); display: flex; flex-direction: column; justify-content: center; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+
+    .hero-chip {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 500;
+      padding: 6px 16px 6px 8px; border-radius: var(--r-pill);
+      background: var(--surface-1); border: 1px solid var(--border-strong);
+      color: var(--text-bright); margin-bottom: 26px;
+    }
+    .hero-chip .gdots { display: inline-flex; gap: 3px; padding: 5px 8px; background: var(--surface-3); border-radius: var(--r-pill); }
+    .hero-chip .gdots i { width: 7px; height: 7px; border-radius: 50%; display: block; animation: bounce 1.4s ease-in-out infinite; }
+    .hero-chip .gdots i:nth-child(1) { background: var(--g-blue); }
+    .hero-chip .gdots i:nth-child(2) { background: var(--g-red); animation-delay: .12s; }
+    .hero-chip .gdots i:nth-child(3) { background: var(--g-yellow); animation-delay: .24s; }
+    .hero-chip .gdots i:nth-child(4) { background: var(--g-green); animation-delay: .36s; }
+    @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-3px); } }
+
+    .hero-hello { font-size: 20px; font-weight: 500; color: var(--text-muted); margin-bottom: 6px; }
+    .hero-title {
+      font-size: 64px; font-weight: 700; line-height: 1.05;
+      color: var(--text-bright); margin-bottom: 20px; letter-spacing: -0.035em;
+    }
+    .g-gradient {
+      background: linear-gradient(90deg, var(--g-blue) 0%, #9b72cb 35%, var(--g-red) 65%, var(--g-yellow) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      animation: shimmer 8s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 200% center; } }
+
+    .hero-type {
+      font-family: var(--font-mono); font-size: 17px; font-weight: 600;
+      color: var(--blue); margin-bottom: 22px; min-height: 30px;
+      display: flex; align-items: center; transition: color .4s;
+    }
+    .hero-type .pre { color: var(--text-dim); margin-right: 10px; }
+    .hero-type .cur { display: inline-block; width: 9px; height: 19px; background: currentColor; animation: blink .8s step-end infinite; margin-left: 3px; border-radius: 1px; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .hero-p { font-size: 16px; color: var(--text-muted); line-height: 1.8; margin-bottom: 28px; max-width: 600px; }
+    .hero-p strong { color: var(--text-bright); font-weight: 600; }
+
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 500;
+      padding: 6px 14px; border-radius: var(--r-pill);
+      background: var(--surface-1); border: 1px solid var(--border); color: var(--text-bright);
+      transition: transform .2s, border-color .2s;
+    }
+    .badge:hover { transform: translateY(-2px); }
+    .badge i { font-size: 12px; }
+    .badge.c-blue i { color: var(--blue); }    .badge.c-blue:hover { border-color: var(--blue); }
+    .badge.c-red i { color: var(--red); }      .badge.c-red:hover { border-color: var(--red); }
+    .badge.c-yellow i { color: var(--yellow); } .badge.c-yellow:hover { border-color: var(--yellow); }
+    .badge.c-green i { color: var(--green); }  .badge.c-green:hover { border-color: var(--green); }
+    .badge.gdg {
+      border: 1px solid transparent;
+      background:
+        linear-gradient(var(--surface-1), var(--surface-1)) padding-box,
+        linear-gradient(90deg, var(--g-blue), var(--g-red), var(--g-yellow), var(--g-green)) border-box;
+    }
+
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 12px 24px; border-radius: var(--r-pill); font-weight: 600; font-size: 14.5px;
+      text-decoration: none; transition: all .2s; border: 1px solid transparent; cursor: pointer; font-family: inherit;
+    }
+    .btn-primary { color: #fff; background: var(--g-blue); }
+    .btn-primary:hover { background: #5a95f5; box-shadow: 0 6px 24px rgba(66, 133, 244, 0.4); transform: translateY(-2px); }
+    .btn-tonal { color: var(--text-bright); background: var(--surface-2); border-color: var(--border); }
+    .btn-tonal:hover { background: var(--surface-3); transform: translateY(-2px); }
+    .btn-tonal .fa-google { background: conic-gradient(from -45deg, var(--g-red) 0 25%, var(--g-yellow) 0 50%, var(--g-green) 0 75%, var(--g-blue) 0 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+    /* Terminal window */
+    .term {
+      background: var(--surface-1); border: 1px solid var(--border-strong); border-radius: var(--r-lg);
+      overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      transition: transform .3s, box-shadow .3s; position: relative;
+    }
+    .term::before {
+      content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none;
+      background: linear-gradient(135deg, rgba(66,133,244,.6), transparent 35%, transparent 65%, rgba(52,168,83,.5));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+    }
+    .term:hover { transform: translateY(-4px); box-shadow: 0 30px 70px rgba(0,0,0,0.55), 0 0 40px rgba(66,133,244,0.08); }
+    .term-head {
+      background: var(--surface-2); padding: 13px 18px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+    .dots { display: flex; gap: 7px; }
+    .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .dot:nth-child(1) { background: var(--g-red); } .dot:nth-child(2) { background: var(--g-yellow); } .dot:nth-child(3) { background: var(--g-green); }
+    .term-title { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+    .term-body { padding: 22px 24px; font-family: var(--font-mono); font-size: 12.8px; line-height: 1.8; overflow-x: auto; white-space: pre; color: var(--text); }
+    .tc { color: var(--text-dim); font-style: italic; } .tk { color: #c58af9; } .tv { color: var(--text-bright); }
+    .ts { color: var(--green); } .tp { color: var(--blue); } .tb { color: var(--yellow); }
+
+    /* Stats bar */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 64px; }
+    .stat {
+      background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-md);
+      padding: 18px 20px; position: relative; overflow: hidden;
+    }
+    .stat::after { content: ''; position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--c); opacity: .85; }
+    .stat-n { font-size: 30px; font-weight: 700; color: var(--text-bright); letter-spacing: -0.02em; line-height: 1.1; }
+    .stat-n span { color: var(--c); }
+    .stat-l { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+    /* SECTIONS */
+    section { padding: 80px 0; scroll-margin-top: 60px; }
+    .sec-head { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 36px; }
+    .sec-num {
+      flex-shrink: 0; width: 48px; height: 48px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-weight: 700; font-size: 15px;
+      color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    }
+    .sec-title { font-size: 34px; font-weight: 700; color: var(--text-bright); letter-spacing: -0.025em; line-height: 1.15; }
+    .sec-sub { font-size: 14.5px; color: var(--text-muted); margin-top: 6px; }
+    .sec-sub code { font-family: var(--font-mono); font-size: 12.5px; color: var(--accent); background: var(--surface-2); padding: 2px 8px; border-radius: 6px; margin-right: 6px; }
+
+    .s-blue   { --accent: var(--blue);   --accent-solid: var(--g-blue); }
+    .s-red    { --accent: var(--red);    --accent-solid: var(--g-red); }
+    .s-yellow { --accent: var(--yellow); --accent-solid: var(--g-yellow); }
+    .s-green  { --accent: var(--green);  --accent-solid: var(--g-green); }
+
+    .card {
+      background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-lg);
+      padding: 26px 28px; transition: transform .25s, border-color .25s, background .25s; position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 28px; right: 28px; height: 2px;
+      background: var(--accent); opacity: 0; transition: opacity .25s; border-radius: 0 0 2px 2px;
+    }
+    .card:hover { border-color: color-mix(in srgb, var(--accent) 35%, transparent); background: var(--surface-2); transform: translateY(-3px); }
+    .card:hover::before { opacity: 1; }
+
+    .card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; gap: 14px; }
+    .card-t { font-size: 18px; font-weight: 700; color: var(--text-bright); letter-spacing: -0.01em; line-height: 1.35; }
+    .card-org { font-size: 14px; color: var(--accent); font-weight: 500; margin-top: 3px; }
+    .card-date {
+      font-size: 12.5px; color: var(--text-bright); font-weight: 500;
+      white-space: nowrap; background: var(--surface-3); padding: 5px 12px; border-radius: var(--r-pill);
+    }
+    .card-list { list-style: none; margin-top: 14px; }
+    .card-list li { padding-left: 22px; position: relative; font-size: 14.5px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.7; }
+    .card-list li::before {
+      content: ''; position: absolute; left: 4px; top: 10px; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .card-list li strong { color: var(--text-bright); font-weight: 600; }
+    .card-ico {
+      width: 46px; height: 46px; border-radius: 14px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+      color: var(--ic, var(--accent)); background: color-mix(in srgb, var(--ic, var(--accent)) 14%, transparent);
+    }
+    .card-top { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+
+    .cards-stack { display: grid; gap: 18px; }
+    .cards-2col { grid-template-columns: 1fr 1fr; }
+
+    /* GDG spotlight card */
+    .card-gdg {
+      border: 1px solid transparent;
+      background:
+        linear-gradient(var(--surface-1), var(--surface-1)) padding-box,
+        linear-gradient(120deg, rgba(66,133,244,.7), rgba(234,67,53,.5), rgba(251,188,4,.5), rgba(52,168,83,.7)) border-box;
+    }
+    .card-gdg:hover {
+      background:
+        linear-gradient(var(--surface-2), var(--surface-2)) padding-box,
+        linear-gradient(120deg, var(--g-blue), var(--g-red), var(--g-yellow), var(--g-green)) border-box;
+    }
+    .card-gdg::before { display: none; }
+    .card-gdg .gdg-glow {
+      position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; pointer-events: none;
+      background: conic-gradient(from 0deg, rgba(66,133,244,.18), rgba(234,67,53,.14), rgba(251,188,4,.14), rgba(52,168,83,.18), rgba(66,133,244,.18));
+      filter: blur(40px);
+    }
+    .gdg-mark { width: 46px; height: 46px; border-radius: 14px; background: var(--surface-3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .gdg-mark svg { width: 30px; height: 20px; }
+
+    /* Timeline */
+    .tl { position: relative; padding-left: 34px; }
+    .tl::before { content: ''; position: absolute; left: 10px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(180deg, var(--g-blue), var(--g-green)); border-radius: 2px; opacity: .6; }
+    .tl-node { margin-bottom: 20px; }
+    .tl-node::after {
+      content: ''; position: absolute; left: -31px; top: 30px; width: 14px; height: 14px; border-radius: 50%;
+      background: var(--bg); border: 3px solid var(--accent); z-index: 2;
+    }
+    .tl-node:nth-child(2) { --accent: var(--green); }
+    .tl .card { overflow: visible; }
+
+    /* Skills */
+    .sk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .sk-card { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px 26px; transition: all .25s; }
+    .sk-card:hover { border-color: color-mix(in srgb, var(--ic) 40%, transparent); transform: translateY(-3px); background: var(--surface-2); }
+    .sk-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .sk-title { font-size: 17px; font-weight: 700; color: var(--text-bright); }
+    .sk-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500;
+      padding: 5px 13px; border-radius: var(--r-pill);
+      background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+      transition: all .2s;
+    }
+    .pill:hover { border-color: var(--border-strong); color: var(--text-bright); }
+    .pill-blue   { color: var(--blue);   background: rgba(138,180,248,.10); border-color: rgba(138,180,248,.25); }
+    .pill-red    { color: var(--red);    background: rgba(242,139,130,.10); border-color: rgba(242,139,130,.25); }
+    .pill-yellow { color: var(--yellow); background: rgba(253,214,99,.10);  border-color: rgba(253,214,99,.25); }
+    .pill-green  { color: var(--green);  background: rgba(129,201,149,.10); border-color: rgba(129,201,149,.25); }
+    .pill-gdg { color: var(--text-bright); border: 1px solid transparent;
+      background: linear-gradient(var(--surface-2), var(--surface-2)) padding-box, linear-gradient(90deg, var(--g-blue), var(--g-red), var(--g-yellow), var(--g-green)) border-box; }
+
+    /* Honors */
+    .honors { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .honor {
+      display: flex; gap: 16px; align-items: flex-start; padding: 20px 22px;
+      background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-md);
+      transition: all .25s;
+    }
+    .honor:hover { border-color: color-mix(in srgb, var(--hc) 40%, transparent); background: var(--surface-2); transform: translateY(-2px); }
+    .honor:last-child { grid-column: 1 / -1; }
+    .honor-ico {
+      font-size: 22px; width: 46px; height: 46px; flex-shrink: 0; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      background: color-mix(in srgb, var(--hc) 14%, transparent);
+    }
+    .honor-t { font-size: 16px; font-weight: 700; color: var(--text-bright); line-height: 1.4; }
+    .honor-d { font-size: 14px; color: var(--text-muted); margin-top: 5px; line-height: 1.65; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .contact-card { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 30px; }
+    .contact-card h3 { font-size: 20px; font-weight: 700; color: var(--text-bright); margin-bottom: 22px; }
+    .c-method { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .c-method > i {
+      width: 44px; height: 44px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      border-radius: 14px; font-size: 16px;
+      color: var(--mc); background: color-mix(in srgb, var(--mc) 14%, transparent);
+    }
+    .c-label { font-size: 12px; color: var(--text-dim); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+    .c-val { font-size: 15px; color: var(--text-bright); }
+    .c-val a { color: var(--blue); text-decoration: none; }
+    .c-val a:hover { text-decoration: underline; }
+
+    .form-group { margin-bottom: 14px; position: relative; }
+    .form-label { display: block; font-size: 12.5px; color: var(--text-muted); margin-bottom: 6px; font-weight: 500; }
+    .form-input, .form-textarea {
+      width: 100%; padding: 12px 16px;
+      background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 12px;
+      color: var(--text-bright); font-family: inherit; font-size: 14.5px;
+      transition: border-color .2s, box-shadow .2s; outline: none;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-dim); }
+    .form-input:focus, .form-textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(138, 180, 248, 0.18); }
+    .form-textarea { min-height: 120px; resize: vertical; }
+    .btn-send {
+      width: 100%; padding: 14px; border: none; border-radius: var(--r-pill);
+      background: var(--g-blue); color: #fff;
+      font-family: inherit; font-size: 15px; font-weight: 600;
+      cursor: pointer; transition: all .2s; margin-top: 4px;
+    }
+    .btn-send:hover { background: #5a95f5; box-shadow: 0 6px 22px rgba(66, 133, 244, 0.4); transform: translateY(-1px); }
+
+    .soc-row { display: flex; gap: 10px; margin-top: 18px; }
+    .soc {
+      width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border-strong); border-radius: 50%; color: var(--text-muted);
+      font-size: 16px; text-decoration: none; transition: all .2s; background: transparent;
+    }
+    .soc:hover { color: #fff; background: var(--hover, var(--g-blue)); border-color: transparent; transform: translateY(-2px); }
+
+    /* Footer */
+    .footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 36px 24px 30px; text-align: center; }
+    .footer .soc-row { justify-content: center; margin: 0 0 16px; }
+    .footer p { font-size: 13.5px; color: var(--text-dim); }
+    .footer a { color: var(--text-muted); text-decoration: none; }
+    .footer a:hover { color: var(--blue); }
+    .footer .heart { color: var(--g-red); }
+    .footer-g { display: inline-flex; gap: 4px; margin-top: 14px; }
+    .footer-g i { width: 6px; height: 6px; border-radius: 50%; display: block; }
+
+    /* Fade-in */
+    .fi { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+    .fi.on { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .fi { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 1020px) {
+      .nav-a { padding: 8px 9px; font-size: 13px; }
+    }
+    @media (max-width: 900px) {
+      .hero-grid, .cards-2col, .sk-grid, .contact-grid, .honors { grid-template-columns: 1fr; }
+      .honor:last-child { grid-column: auto; }
+      .hero-title { font-size: 48px; }
+      .stats { grid-template-columns: repeat(2, 1fr); margin-top: 40px; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--surface-1); border-bottom: 1px solid var(--border); flex-direction: column; align-items: stretch; padding: 12px; gap: 4px; }
+      .nav-links.open { display: flex; }
+      .nav-a { padding: 11px 16px; font-size: 15px; }
+      .hamburger { display: inline-flex; align-items: center; justify-content: center; }
+    }
+    @media (max-width: 560px) {
+      .hero { padding: 44px 0 24px; min-height: auto; }
+      .hero-title { font-size: 38px; }
+      .sec-title { font-size: 26px; }
+      .nav-logo small, .nav-cv-btn span { display: none; }
+      .card { padding: 22px 20px; }
+      .card-head { flex-direction: column; }
+      .term-body { font-size: 11.5px; padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- NAVBAR -->
+<header class="nav">
+  <div class="g-stripe"><span></span><span></span><span></span><span></span></div>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="Home">
+      <svg viewBox="0 0 34 22" aria-hidden="true">
+        <g fill="none" stroke-width="4.2" stroke-linecap="round">
+          <path d="M12 3 L3 11" stroke="#ea4335"/>
+          <path d="M3 11 L12 19" stroke="#4285f4"/>
+          <path d="M22 3 L31 11" stroke="#34a853"/>
+          <path d="M31 11 L22 19" stroke="#fbbc04"/>
+        </g>
+      </svg>
+      <span class="txt">Ayşegül Nalkesen<small>GDG on Campus · Kayseri Univ.</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about" class="nav-a">About</a>
+      <a href="#community" class="nav-a">Community & GDG</a>
+      <a href="#experience" class="nav-a">Experience</a>
+      <a href="#skills" class="nav-a">Skills</a>
+      <a href="#projects" class="nav-a">Projects</a>
+      <a href="#achievements" class="nav-a">Honors</a>
+      <a href="#contact" class="nav-a">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="Aysegul_Nalkesen_CV_EN.pdf" download="Aysegul_Nalkesen_CV_EN.pdf" class="nav-cv-btn" title="Download Resume (PDF)">
+        <i class="fa-solid fa-download"></i> <span>Resume</span>
+      </a>
+      <a href="index.html" class="nav-lang" title="Türkçe Versiyona Geç">TR</a>
+      <button class="hamburger" id="hamburger" aria-label="Open Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-chip">
+          <span class="gdots"><i></i><i></i><i></i><i></i></span>
+          <span>Kayseri University • Software Engineering</span>
+        </div>
+
+        <p class="hero-hello">Hello, I'm 👋</p>
+        <h1 class="hero-title">
+          Ayşegül<br>
+          <span class="g-gradient">Nalkesen</span>
+        </h1>
+
+        <div class="hero-type"><span class="pre">&gt;</span><span id="typed"></span><span class="cur"></span></div>
+
+        <p class="hero-p">
+          Software Engineering undergraduate at Kayseri University. Blending over 10 years of Kickboxing Black Belt discipline, Erasmus project management, and entrepreneurship into technology. Technical Core Team Member at <strong>Google Developer Groups (GDG)</strong>, currently coordinating the upcoming Google-backed <strong>DevFest</strong> conference. Also serving on the technical and operations team of the <strong>University IT & Computer Club</strong>, instructing hands-on workshops on <strong>Arduino</strong> and <strong>Cybersecurity Fundamentals</strong>.
+        </p>
+
+        <div class="badges">
+          <span class="badge gdg"><i class="fa-brands fa-google" style="color:var(--blue)"></i> GDG Core Team & DevFest</span>
+          <span class="badge c-blue"><i class="fa-solid fa-microchip"></i> Arduino & Cybersecurity Instructor</span>
+          <span class="badge c-green"><i class="fa-solid fa-compass"></i> TEINN Explorer</span>
+          <span class="badge c-red"><i class="fa-solid fa-hand-fist"></i> 1st Dan Black Belt (10+ Yrs)</span>
+          <span class="badge c-yellow"><i class="fa-solid fa-earth-europe"></i> Erasmus PQL</span>
+        </div>
+
+        <div class="hero-btns">
+          <a href="Aysegul_Nalkesen_CV_EN.pdf" download="Aysegul_Nalkesen_CV_EN.pdf" class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i> Download Resume (PDF)</a>
+          <a href="#community" class="btn btn-tonal"><i class="fa-brands fa-google"></i> GDG & DevFest</a>
+          <a href="#contact" class="btn btn-tonal"><i class="fa-regular fa-paper-plane"></i> Get in Touch</a>
+        </div>
+      </div>
+
+      <!-- TERMINAL WINDOW -->
+      <div>
+        <div class="term">
+          <div class="term-head">
+            <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <span class="term-title">aysegul.config.js</span>
+            <i class="fa-brands fa-js" style="color:var(--g-yellow);font-size:15px"></i>
+          </div>
+          <div class="term-body"><span class="tc">// developer profile & community info</span>
+<span class="tk">const</span> <span class="tv">aysegul</span> = {
+  <span class="tp">name</span>: <span class="ts">"Ayşegül Nalkesen"</span>,
+  <span class="tp">role</span>: <span class="ts">"Software Engineering Student"</span>,
+  <span class="tp">university</span>: <span class="ts">"Kayseri University"</span>,
+  <span class="tp">gdg</span>: <span class="ts">"GDG Core Team & DevFest 🚀"</span>,
+  <span class="tp">it_club</span>: <span class="ts">"Arduino & Cybersecurity Instructor 💻"</span>,
+  <span class="tp">sport</span>: <span class="ts">"Kickboxing 1st Dan Black Belt 🥋"</span>,
+  <span class="tp">skills</span>: <span class="tb">[</span>
+    <span class="ts">"Python"</span>, <span class="ts">"C/C++"</span>,
+    <span class="ts">"Arduino / IoT"</span>, <span class="ts">"Cybersecurity"</span>,
+    <span class="ts">"HTML/CSS/JS"</span>, <span class="ts">"Git & GitHub"</span>
+  <span class="tb">]</span>,
+  <span class="tp">honors</span>: <span class="tb">[</span>
+    <span class="ts">"TEINN Explorer Program 🚀"</span>,
+    <span class="ts">"Erasmus Pupil Quality Label 🇪🇺"</span>,
+    <span class="ts">"Quiz Bowl Champion 🏆"</span>
+  <span class="tb">]</span>,
+  <span class="tp">motto</span>: <span class="ts">"Discipline + Code + Community"</span>
+};
+
+<span class="tk">export default</span> <span class="tv">aysegul</span>;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat" style="--c:var(--g-blue)"><div class="stat-n">GDG<span>.</span></div><div class="stat-l">Core Team & DevFest</div></div>
+      <div class="stat" style="--c:var(--g-red)"><div class="stat-n">10<span>+</span></div><div class="stat-l">Yrs Kickboxing · Black Belt</div></div>
+      <div class="stat" style="--c:var(--g-yellow)"><div class="stat-n">2<span>×</span></div><div class="stat-l">International Erasmus Projects</div></div>
+      <div class="stat" style="--c:var(--g-green)"><div class="stat-n">4<span>+</span></div><div class="stat-l">Projects & Ventures</div></div>
+    </div>
+  </section>
+
+  <!-- EDUCATION & ABOUT -->
+  <section id="about" class="fi s-blue">
+    <div class="sec-head">
+      <div class="sec-num">01</div>
+      <div>
+        <h2 class="sec-title">Education & Background</h2>
+        <p class="sec-sub"><code>cat ./education-and-background.md</code>Academic roadmap and core foundations</p>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-node card">
+        <div class="card-head">
+          <div>
+            <div class="card-t">Kayseri University</div>
+            <div class="card-org">Faculty of Engineering, Architecture & Design — Software Engineering (B.S.)</div>
+          </div>
+          <span class="card-date">2024 – Present</span>
+        </div>
+        <ul class="card-list">
+          <li>Core coursework in Algorithms, Data Structures, Object-Oriented Programming (OOP), and Software Architecture.</li>
+          <li>Active participation and peer collaboration within campus developer communities and tech societies.</li>
+        </ul>
+      </div>
+      <div class="tl-node card">
+        <div class="card-head">
+          <div>
+            <div class="card-t">Çakmaklı Cumhuriyet Anatolian High School</div>
+            <div class="card-org">STEM / Science Track • Entrepreneurship Captain & MUN Organizer</div>
+          </div>
+          <span class="card-date">2020 – 2024</span>
+        </div>
+        <ul class="card-list">
+          <li>Founding Captain of the Entrepreneurship Club; organizer of inter-school Model United Nations (MUN) and debate leagues.</li>
+          <li>1st Place Champion in Regional High School Academic Quiz Competition 🏆</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY & TECHNICAL LEADERSHIP -->
+  <section id="community" class="fi s-red">
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div>
+        <h2 class="sec-title">Community & Technical Leadership</h2>
+        <p class="sec-sub"><code>view ./communities/technical-leadership.log</code>Google Developer Groups, DevFest & IT Club</p>
+      </div>
+    </div>
+    <div class="cards-stack">
+      <div class="card card-gdg s-blue">
+        <div class="gdg-glow"></div>
+        <div class="card-head">
+          <div class="card-top">
+            <div class="gdg-mark">
+              <svg viewBox="0 0 34 22" aria-hidden="true">
+                <g fill="none" stroke-width="4.2" stroke-linecap="round">
+                  <path d="M12 3 L3 11" stroke="#ea4335"/><path d="M3 11 L12 19" stroke="#4285f4"/>
+                  <path d="M22 3 L31 11" stroke="#34a853"/><path d="M31 11 L22 19" stroke="#fbbc04"/>
+                </g>
+              </svg>
+            </div>
+            <div>
+              <div class="card-t">Google Developer Groups (GDG on Campus) — Kayseri University</div>
+              <div class="card-org">Technical Core Team Member & DevFest Organizer</div>
+            </div>
+          </div>
+          <span class="card-date">Oct 2024 – Present</span>
+        </div>
+        <ul class="card-list">
+          <li>Active coordinator in the upcoming Google-backed <strong>DevFest</strong> technology conference, managing stage flow, technical infrastructure, and speaker sessions.</li>
+          <li>Providing peer mentorship across modern development paradigms, web frameworks, and Google developer tools.</li>
+          <li>Connecting university engineering students with the wider software industry and community hackathons.</li>
+        </ul>
+        <div style="margin-top:16px" class="sk-pills">
+          <span class="pill pill-gdg"><i class="fa-brands fa-google"></i> GDG on Campus</span>
+          <span class="pill pill-blue"><i class="fa-solid fa-rocket"></i> DevFest 2024</span>
+          <span class="pill pill-green">Technical Ops</span>
+          <span class="pill pill-yellow">Google Technologies</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-top">
+            <div class="card-ico"><i class="fa-solid fa-microchip"></i></div>
+            <div>
+              <div class="card-t">Kayseri University IT & Computer Club</div>
+              <div class="card-org">Technical & Operations Team Member / Instructor</div>
+            </div>
+          </div>
+          <span class="card-date">Oct 2024 – Present</span>
+        </div>
+        <ul class="card-list">
+          <li>Selected for the technical and operational team, preparing and delivering practical workshops on <strong>Arduino (IoT / Embedded Systems)</strong> and <strong>Cybersecurity Basics</strong>.</li>
+          <li>Designing project-based lab activities empowering peers to build tangible embedded hardware prototypes.</li>
+          <li>Managing logistics, guest speaker sessions, and competitive hackathon events across the campus.</li>
+        </ul>
+        <div style="margin-top:16px" class="sk-pills">
+          <span class="pill pill-blue"><i class="fa-solid fa-microchip"></i> Arduino Instructor</span>
+          <span class="pill pill-red"><i class="fa-solid fa-shield-halved"></i> Cybersecurity</span>
+          <span class="pill">Workshops</span>
+          <span class="pill">Event Ops</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE & LEADERSHIP -->
+  <section id="experience" class="fi s-yellow">
+    <div class="sec-head">
+      <div class="sec-num">03</div>
+      <div>
+        <h2 class="sec-title">Experience & Leadership</h2>
+        <p class="sec-sub"><code>ls -la ./experiences/</code>Leadership roles, entrepreneurship, and hands-on experience</p>
+      </div>
+    </div>
+    <div class="cards-stack">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-t">Entrepreneurship Club Captain & Project Lead</div>
+            <div class="card-org">Kale Group — Social Entrepreneurship Program</div>
+          </div>
+          <span class="card-date">Oct 2023 – Apr 2024</span>
+        </div>
+        <ul class="card-list">
+          <li>As Club Captain, led a cross-functional team in developing <strong>2 social innovation projects</strong>.</li>
+          <li>Analyzed field data, evaluated project risks, and applied user-centric approaches to feasibility models.</li>
+          <li>Successfully defended project findings in front of the executive summit jury.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-t">Team Leader & Debate Society Founder</div>
+            <div class="card-org">Çakmaklı CAL Student Societies</div>
+          </div>
+          <span class="card-date">Oct 2023 – Jun 2024</span>
+        </div>
+        <ul class="card-list">
+          <li>Coordinated an 8-member core team through structured weekly planning and debate moderation.</li>
+          <li>Organized inter-class debate tournaments and Model United Nations simulations, enhancing public speaking skills for 50+ peers.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-t">Sales Consultant (Part-Time)</div>
+            <div class="card-org">English Home</div>
+          </div>
+          <span class="card-date">Aug – Sep 2024</span>
+        </div>
+        <ul class="card-list">
+          <li>Contributed to an average monthly sales turnover of <strong>₺800,000</strong> through consultative customer engagement and retail crisis management.</li>
+          <li>Quickly adapted to consumer demand patterns, delivering target-driven solutions that supported store performance.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="fi s-green">
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div>
+        <h2 class="sec-title">Skills & Capabilities</h2>
+        <p class="sec-sub"><code>neofetch --skills</code>Technical toolkit, leadership competencies, and athletic discipline</p>
+      </div>
+    </div>
+    <div class="sk-grid">
+      <div class="sk-card" style="--ic:var(--blue)">
+        <div class="sk-head">
+          <div class="card-ico"><i class="fa-solid fa-code"></i></div>
+          <div class="sk-title">Software & Programming</div>
+        </div>
+        <div class="sk-pills">
+          <span class="pill pill-blue">Python</span>
+          <span class="pill pill-blue">C / C++</span>
+          <span class="pill">Algorithms</span>
+          <span class="pill">Data Structures</span>
+          <span class="pill">OOP Principles</span>
+        </div>
+      </div>
+      <div class="sk-card" style="--ic:var(--red)">
+        <div class="sk-head">
+          <div class="card-ico"><i class="fa-solid fa-globe"></i></div>
+          <div class="sk-title">Web & Dev Tools</div>
+        </div>
+        <div class="sk-pills">
+          <span class="pill pill-red">HTML5</span>
+          <span class="pill pill-red">CSS3</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">Git & GitHub</span>
+          <span class="pill">VS Code</span>
+        </div>
+      </div>
+      <div class="sk-card" style="--ic:var(--yellow)">
+        <div class="sk-head">
+          <div class="card-ico"><i class="fa-solid fa-users-gear"></i></div>
+          <div class="sk-title">Community & Leadership</div>
+        </div>
+        <div class="sk-pills">
+          <span class="pill pill-gdg">GDG Organizing</span>
+          <span class="pill">Team Captaincy</span>
+          <span class="pill">Project Strategy</span>
+          <span class="pill">MUN & Debate</span>
+          <span class="pill">Public Speaking</span>
+        </div>
+      </div>
+      <div class="sk-card" style="--ic:var(--green)">
+        <div class="sk-head">
+          <div class="card-ico"><i class="fa-solid fa-hand-fist"></i></div>
+          <div class="sk-title">Athletic Discipline & Soft Skills</div>
+        </div>
+        <div class="sk-pills">
+          <span class="pill pill-green">10+ Yrs Kickboxing</span>
+          <span class="pill">1st Dan Black Belt</span>
+          <span class="pill">Crisis Management</span>
+          <span class="pill">Agile Mindset</span>
+          <span class="pill">High Focus</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="fi s-blue">
+    <div class="sec-head">
+      <div class="sec-num">05</div>
+      <div>
+        <h2 class="sec-title">Featured Projects</h2>
+        <p class="sec-sub"><code>git log --oneline ./projects</code>Highlighted builds, prototypes, and research</p>
+      </div>
+    </div>
+    <div class="cards-stack cards-2col">
+
+      <!-- PROJECT 1: TURKISH SIGN LANGUAGE (TİD) -->
+      <div class="card" style="--accent:var(--blue)">
+        <div class="card-top">
+          <div class="card-ico"><i class="fa-solid fa-hands-asl-interpreting"></i></div>
+          <div>
+            <div class="card-t">Turkish Sign Language (TİD) AI Assistant</div>
+            <div class="card-org">Accessibility & Computer Vision Project</div>
+          </div>
+        </div>
+        <ul class="card-list">
+          <li>Digital assistant concept designed to reduce communication barriers for the deaf community and raise sign language awareness.</li>
+          <li>Exploring computer vision models and gesture recognition to interpret hand movements into readable text and synthesized speech.</li>
+          <li>Focused on inclusive UI/UX design and engineering technology with genuine social impact.</li>
+        </ul>
+        <div style="margin-top:16px" class="sk-pills">
+          <span class="pill pill-blue">TİD</span>
+          <span class="pill pill-blue">Computer Vision</span>
+          <span class="pill">AI Modeling</span>
+          <span class="pill">Python</span>
+          <span class="pill pill-green">Social Impact</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: SMART WARDROBE -->
+      <div class="card" style="--accent:var(--red)">
+        <div class="card-top">
+          <div class="card-ico"><i class="fa-solid fa-microchip"></i></div>
+          <div>
+            <div class="card-t">Smart Wardrobe (Akıllı Gardırop)</div>
+            <div class="card-org">Nişantaşı University Idea Festival</div>
+          </div>
+        </div>
+        <ul class="card-list">
+          <li>IoT concept that digitizes wardrobe inventory and algorithmically suggests outfits based on real-time weather and styling parameters.</li>
+          <li>Developed Business Model Canvas (BMC), value proposition, and architectural pitch deck.</li>
+        </ul>
+        <div style="margin-top:16px" class="sk-pills">
+          <span class="pill pill-red">IoT</span><span class="pill">Algorithms</span><span class="pill">Innovation</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: SOCIAL ENTREPRENEURSHIP -->
+      <div class="card" style="--accent:var(--green)">
+        <div class="card-top">
+          <div class="card-ico"><i class="fa-solid fa-seedling"></i></div>
+          <div>
+            <div class="card-t">Social Entrepreneurship Initiatives</div>
+            <div class="card-org">Kale Group Social Entrepreneurship Summit</div>
+          </div>
+        </div>
+        <ul class="card-list">
+          <li>Led team efforts across 2 sustainable social innovation projects addressing local and environmental challenges.</li>
+          <li>Conducted problem validation, demographic research, and jury-facing presentations.</li>
+        </ul>
+        <div style="margin-top:16px" class="sk-pills">
+          <span class="pill pill-green">Social Innovation</span><span class="pill">Teamwork</span><span class="pill">Leadership</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 4: PORTFOLIO -->
+      <div class="card" style="--accent:var(--yellow)">
+        <div class="card-top">
+          <div class="card-ico"><i class="fa-solid fa-globe"></i></div>
+          <div>
+            <div class="card-t">Interactive Developer Platform</div>
+            <div class="card-org"><a href="https://github.com/ghost-ayse" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">github.com/ghost-ayse <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px"></i></a></div>
+          </div>
+        </div>
+        <ul class="card-list">
+          <li>Modern responsive developer portfolio showcasing GDG involvement, accessibility projects, and athletic honors.</li>
+          <li>Built with modern semantic standards, Git version control, and fluid responsive layouts.</li>
+        </ul>
+        <div style="margin-top:16px" class="sk-pills">
+          <span class="pill pill-yellow">HTML5</span><span class="pill">CSS3</span><span class="pill">JavaScript</span><span class="pill">Git</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HONORS & SUMMITS -->
+  <section id="achievements" class="fi s-red">
+    <div class="sec-head">
+      <div class="sec-num">06</div>
+      <div>
+        <h2 class="sec-title">Honors & Summits</h2>
+        <p class="sec-sub"><code>grep -r 'honors' ./life/</code>Awards, certifications, and summit participations</p>
+      </div>
+    </div>
+    <div class="honors">
+      <div class="honor" style="--hc:var(--g-blue)"><div class="honor-ico">🚀</div><div><div class="honor-t">TEINN Explorer Program (Teams in Innovation)</div><div class="honor-d">Selected into the innovation and entrepreneurship program as a 'TEINN Explorer', analyzing startup ecosystems and collaborative venture models.</div></div></div>
+      <div class="honor" style="--hc:var(--g-yellow)"><div class="honor-ico">🇪🇺</div><div><div class="honor-t">Erasmus Pupil Quality Label</div><div class="honor-d">European Commission recognized quality seal. Co-authored project proposals and directed Turkish dissemination across 2 international Erasmus programs.</div></div></div>
+      <div class="honor" style="--hc:var(--g-red)"><div class="honor-ico">🥋</div><div><div class="honor-t">Kickboxing 1st Dan Black Belt (10+ Years)</div><div class="honor-d">Over a decade of athletic focus, emotional resilience, calm composure under pressure, and enduring work ethic.</div></div></div>
+      <div class="honor" style="--hc:var(--g-green)"><div class="honor-ico">🏆</div><div><div class="honor-t">1st Place — Inter-School Academic Quiz Competition</div><div class="honor-d">Championship earned through agile analytical reasoning and rigorous teamwork.</div></div></div>
+      <div class="honor" style="--hc:var(--g-blue)"><div class="honor-ico">🎓</div><div><div class="honor-t">Prestigious Summits & Programs</div><div class="honor-d">Boğaziçi Defense Industry Summit • ITU Entrepreneurship Festival • Abdi İbrahim "Discoverers of the Future" • Galatasaray University Philosophy & Logic Seminars</div></div></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="fi s-green">
+    <div class="sec-head">
+      <div class="sec-num">07</div>
+      <div>
+        <h2 class="sec-title">Get in Touch</h2>
+        <p class="sec-sub"><code>ssh connect@aysegul</code>Opening communication channels...</p>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Contact Info</h3>
+        <div class="c-method"><i class="fa-solid fa-envelope" style="--mc:var(--red)"></i><div><div class="c-label">Email</div><div class="c-val"><a href="mailto:aysenalkesen7@gmail.com">aysenalkesen7@gmail.com</a></div></div></div>
+        <div class="c-method"><i class="fa-solid fa-phone" style="--mc:var(--green)"></i><div><div class="c-label">Phone</div><div class="c-val">+90 501 335 89 46</div></div></div>
+        <div class="c-method"><i class="fa-solid fa-location-dot" style="--mc:var(--yellow)"></i><div><div class="c-label">Location</div><div class="c-val">Kayseri / Turkey</div></div></div>
+        <div class="c-method"><i class="fa-solid fa-building-columns" style="--mc:var(--blue)"></i><div><div class="c-label">University</div><div class="c-val">Kayseri University (15 July Campus)</div></div></div>
+        <div class="soc-row">
+          <a href="https://github.com/ghost-ayse" target="_blank" rel="noopener" class="soc" title="GitHub" style="--hover:#333"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/ayşegül-yeter-nalkesen-93240b286/" target="_blank" rel="noopener" class="soc" title="LinkedIn" style="--hover:#0a66c2"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:aysenalkesen7@gmail.com" class="soc" title="Email" style="--hover:var(--g-red)"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Send a Message</h3>
+        <form id="contactForm" onsubmit="return handleForm(event)">
+          <div class="form-group"><label class="form-label" for="fName">Full Name</label><input id="fName" type="text" class="form-input" placeholder="e.g. Alex Smith" required></div>
+          <div class="form-group"><label class="form-label" for="fMail">Email Address</label><input id="fMail" type="email" class="form-input" placeholder="e.g. alex@example.com" required></div>
+          <div class="form-group"><label class="form-label" for="fSub">Subject</label><input id="fSub" type="text" class="form-input" placeholder="GDG / Project Collaboration / Hello"></div>
+          <div class="form-group"><label class="form-label" for="fMsg">Message</label><textarea id="fMsg" class="form-textarea" placeholder="Write your message here..." required></textarea></div>
+          <button type="submit" class="btn-send"><i class="fa-solid fa-paper-plane"></i> &nbsp;Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="soc-row">
+    <a href="https://github.com/ghost-ayse" target="_blank" rel="noopener" class="soc" style="--hover:#333"><i class="fa-brands fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/ayşegül-yeter-nalkesen-93240b286/" target="_blank" rel="noopener" class="soc" style="--hover:#0a66c2"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="mailto:aysenalkesen7@gmail.com" class="soc" style="--hover:var(--g-red)"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+  <p>&copy; <span id="year">2024</span> <a href="#hero">Ayşegül Nalkesen</a> &bull; Engineered with discipline, grit &amp; <span class="heart">♥</span> 🥊🚀</p>
+  <div class="footer-g"><i style="background:var(--g-blue)"></i><i style="background:var(--g-red)"></i><i style="background:var(--g-yellow)"></i><i style="background:var(--g-green)"></i></div>
+</footer>
+
+<script>
+// GOOGLE-COLORED PARTICLE CANVAS
+(function(){
+  const c = document.getElementById('particles');
+  if (!c || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const x = c.getContext('2d');
+  const colors = ['66,133,244', '234,67,53', '251,188,4', '52,168,83'];
+  let w, h, dpr, pts = [];
+  const mouse = { x: -9999, y: -9999 };
+
+  function init() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth; h = window.innerHeight;
+    c.width = w * dpr; c.height = h * dpr;
+    c.style.width = w + 'px'; c.style.height = h + 'px';
+    x.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.min(70, Math.floor(w * h / 22000));
+    pts = Array.from({ length: n }, () => ({
+      x: Math.random() * w, y: Math.random() * h,
+      vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25,
+      r: Math.random() * 1.6 + .8,
+      c: colors[Math.floor(Math.random() * 4)]
+    }));
+  }
+
+  function draw() {
+    x.clearRect(0, 0, w, h);
+    for (let i = 0; i < pts.length; i++) {
+      const p = pts[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+
+      const md = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+      const boost = md < 160 ? (1 - md / 160) : 0;
+
+      x.beginPath();
+      x.arc(p.x, p.y, p.r + boost * 1.5, 0, Math.PI * 2);
+      x.fillStyle = `rgba(${p.c},${.35 + boost * .5})`;
+      x.fill();
+
+      for (let j = i + 1; j < pts.length; j++) {
+        const q = pts[j];
+        const d = Math.hypot(p.x - q.x, p.y - q.y);
+        if (d < 120) {
+          x.beginPath();
+          x.moveTo(p.x, p.y); x.lineTo(q.x, q.y);
+          x.strokeStyle = `rgba(${p.c},${(1 - d / 120) * .12})`;
+          x.lineWidth = 1;
+          x.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('resize', init);
+  init(); draw();
+})();
+
+// DYNAMIC TYPING WITH GOOGLE PALETTE
+(function(){
+  const el = document.getElementById('typed');
+  if (!el) return;
+  const box = el.parentElement;
+  const tones = ['#8ab4f8', '#f28b82', '#fdd663', '#81c995'];
+  const ph = [
+    'GDG Core Team & DevFest Organizer 🚀',
+    'Arduino & Cybersecurity Instructor 💻',
+    'Software Engineering Student ⚙️',
+    'TEINN Explorer & Innovator 💡',
+    'Kickboxing 1st Dan Black Belt 🥋',
+    'Erasmus Pupil Quality Label 🇪🇺'
+  ];
+  let pi = 0, ci = 0, del = false;
+  box.style.color = tones[0];
+
+  function t() {
+    const p = Array.from(ph[pi]);
+    if (del) { ci--; } else { ci++; }
+    el.textContent = p.slice(0, ci).join('');
+    let s = del ? 25 : 60;
+    if (!del && ci === p.length) { s = 2200; del = true; }
+    else if (del && ci === 0) {
+      del = false;
+      pi = (pi + 1) % ph.length;
+      box.style.color = tones[pi % tones.length];
+      s = 350;
+    }
+    setTimeout(t, s);
+  }
+  t();
+})();
+
+// MOBILE MENU
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+if (hamburger && navLinks) {
+  hamburger.onclick = () => {
+    const open = navLinks.classList.toggle('open');
+    hamburger.querySelector('i').className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+  };
+  navLinks.querySelectorAll('.nav-a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.querySelector('i').className = 'fa-solid fa-bars';
+    });
+  });
+}
+
+// SCROLL OBSERVER
+const obs = new IntersectionObserver(e => {
+  e.forEach(x => { if (x.isIntersecting) x.target.classList.add('on'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fi').forEach(e => obs.observe(e));
+
+// ACTIVE LINK TRACKER
+window.addEventListener('scroll', () => {
+  let c = '';
+  document.querySelectorAll('section[id]').forEach(s => {
+    if (window.scrollY >= s.offsetTop - 140) c = s.id;
+  });
+  document.querySelectorAll('.nav-a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + c);
+  });
+}, { passive: true });
+
+// YEAR
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// FORM HANDLER
+function handleForm(e) {
+  e.preventDefault();
+  const f = e.target;
+  const name = f.querySelector('#fName').value;
+  const mail = f.querySelector('#fMail').value;
+  const sub = f.querySelector('#fSub').value || 'Portfolio Contact';
+  const msg = f.querySelector('#fMsg').value;
+  const b = f.querySelector('.btn-send');
+  b.innerHTML = '<i class="fa-solid fa-check"></i> &nbsp;Thank you! Launching email client...';
+  b.style.background = '#34a853';
+  setTimeout(() => {
+    window.location.href = 'mailto:aysenalkesen7@gmail.com?subject=' + encodeURIComponent(sub) +
+      '&body=' + encodeURIComponent('From: ' + name + ' (' + mail + ')\n\n' + msg);
+  }, 600);
+  setTimeout(() => {
+    b.innerHTML = '<i class="fa-solid fa-paper-plane"></i> &nbsp;Send Message';
+    b.style.background = '';
+    f.reset();
+  }, 3000);
+  return false;
+}
+</script>
+</body>
+</html>

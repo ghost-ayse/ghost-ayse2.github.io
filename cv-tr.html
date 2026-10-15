@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayşegül Nalkesen — Yazılım Mühendisliği & GDG Organizasyon</title>
+  <meta name="description" content="Ayşegül Nalkesen — Kayseri Üniversitesi Yazılım Mühendisliği öğrencisi, GDG on Campus Organizasyon Ekibi Üyesi, sporcu, Erasmus Pupil Quality Label sahibi.">
+  <meta name="theme-color" content="#0e0f12">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Google Sans ayrı istekte: yüklenemezse diğer fontlar etkilenmez -->
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      /* Yüzeyler (Material dark) */
+      --bg: #0e0f12;
+      --surface-1: #16181d;
+      --surface-2: #1d2026;
+      --surface-3: #262a32;
+      --border: rgba(255, 255, 255, 0.07);
+      --border-strong: rgba(255, 255, 255, 0.14);
+
+      /* Google çekirdek renkleri */
+      --g-blue: #4285f4;
+      --g-red: #ea4335;
+      --g-yellow: #fbbc04;
+      --g-green: #34a853;
+
+      /* Koyu tema için yumuşatılmış tonlar (Google dark mode) */
+      --blue: #8ab4f8;
+      --red: #f28b82;
+      --yellow: #fdd663;
+      --green: #81c995;
+
+      --text: #c4c7c5;
+      --text-bright: #e8eaed;
+      --text-muted: #9aa0a6;
+      --text-dim: #6b7178;
+
+      --font-sans: 'Google Sans', 'Outfit', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --r-sm: 8px;
+      --r-md: 14px;
+      --r-lg: 22px;
+      --r-pill: 999px;
+
+      --accent: var(--blue);
+      --accent-solid: var(--g-blue);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--surface-3) var(--bg); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--g-blue); }
+    ::selection { background: rgba(66, 133, 244, 0.35); color: #fff; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(600px circle at 8% 10%, rgba(66, 133, 244, 0.10), transparent 60%),
+        radial-gradient(500px circle at 92% 18%, rgba(234, 67, 53, 0.07), transparent 60%),
+        radial-gradient(550px circle at 85% 85%, rgba(52, 168, 83, 0.07), transparent 60%),
+        radial-gradient(500px circle at 12% 90%, rgba(251, 188, 4, 0.06), transparent 60%);
+    }
+    /* ince nokta ızgarası */
+    body::after {
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+    }
+
+    #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+    .wrap { position: relative; z-index: 1; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    /* Google renk şeridi */
+    .g-stripe { display: flex; height: 4px; width: 100%; }
+    .g-stripe span { flex: 1; }
+    .g-stripe span:nth-child(1) { background: var(--g-blue); }
+    .g-stripe span:nth-child(2) { background: var(--g-red); }
+    .g-stripe span:nth-child(3) { background: var(--g-yellow); }
+    .g-stripe span:nth-child(4) { background: var(--g-green); }
+
+    /* ================= NAV ================= */
+    .nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(14, 15, 18, 0.78);
+      backdrop-filter: blur(20px) saturate(140%); -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1140px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--text-bright); text-decoration: none; font-weight: 700; font-size: 16px; letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+    .nav-logo svg { width: 34px; height: 22px; flex-shrink: 0; }
+    .nav-logo small { display: block; font-size: 11px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.02em; line-height: 1.1; }
+    .nav-logo .txt { line-height: 1.15; }
+
+    .nav-links { display: flex; gap: 2px; align-items: center; }
+    .nav-a {
+      position: relative;
+      color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500;
+      padding: 8px 13px; border-radius: var(--r-pill); transition: color .2s, background .2s;
+    }
+    .nav-a:hover { color: var(--text-bright); background: rgba(255, 255, 255, 0.06); }
+    .nav-a.active { color: var(--blue); background: rgba(138, 180, 248, 0.12); }
+
+    .nav-actions { display: flex; gap: 8px; align-items: center; }
+    .nav-lang {
+      font-size: 13px; font-weight: 600;
+      background: transparent; border: 1px solid var(--border-strong); color: var(--text-bright);
+      padding: 7px 14px; border-radius: var(--r-pill); text-decoration: none; transition: all .2s;
+    }
+    .nav-lang:hover { border-color: var(--blue); color: var(--blue); }
+    .nav-cv-btn {
+      font-size: 13px; font-weight: 600;
+      background: var(--blue); color: #062e6f;
+      padding: 8px 16px; border-radius: var(--r-pill); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 7px; transition: all .2s;
+    }
+    .nav-cv-btn:hover { background: #aecbfa; box-shadow: 0 4px 18px rgba(138, 180, 248, 0.35); }
+
+    .hamburger {
+      display: none; background: none; border: 1px solid var(--border-strong); color: var(--text-bright);
+      font-size: 17px; width: 40px; height: 40px; border-radius: var(--r-pill); cursor: pointer;
+    }
+
+    /* ================= HERO ================= */
+    .hero { padding: 80px 0 40px; min-height: calc(100vh - 68px); display: flex; flex-direction: column; justify-content: center; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+
+    .hero-chip {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 500;
+      padding: 6px 16px 6px 8px; border-radius: var(--r-pill);
+      background: var(--surface-1); border: 1px solid var(--border-strong);
+      color: var(--text-bright); margin-bottom: 26px;
+    }
+    .hero-chip .gdots { display: inline-flex; gap: 3px; padding: 5px 8px; background: var(--surface-3); border-radius: var(--r-pill); }
+    .hero-chip .gdots i { width: 7px; height: 7px; border-radius: 50%; display: block; animation: bounce 1.4s ease-in-out infinite; }
+    .hero-chip .gdots i:nth-child(1) { background: var(--g-blue); }
+    .hero-chip .gdots i:nth-child(2) { background: var(--g-red); animation-delay: .12s; }
+    .hero-chip .gdots i:nth-child(3) { background: var(--g-yellow); animation-delay: .24s; }
+    .hero-chip .gdots i:nth-child(4) { background: var(--g-green); animation-delay: .36s; }
+    @keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-3px); } }
+
+    .hero-hello { font-size: 20px; font-weight: 500; color: var(--text-muted); margin-bottom: 6px; }
+    .hero-title {
+      font-size: 64px; font-weight: 700; line-height: 1.05;
+      color: var(--text-bright); margin-bottom: 20px; letter-spacing: -0.035em;
+    }
+    .g-gradient {
+      background: linear-gradient(90deg, var(--g-blue) 0%, #9b72cb 35%, var(--g-red) 65%, var(--g-yellow) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+      animation: shimmer 8s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: 200% center; } }
+
+    .hero-type {
+      font-family: var(--font-mono); font-size: 17px; font-weight: 600;
+      color: var(--blue); margin-bottom: 22px; min-height: 30px;
+      display: flex; align-items: center; transition: color .4s;
+    }
+    .hero-type .pre { color: var(--text-dim); margin-right: 10px; }
+    .hero-type .cur { display: inline-block; width: 9px; height: 19px; background: currentColor; animation: blink .8s step-end infinite; margin-left: 3px; border-radius: 1px; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .hero-p { font-size: 16px; color: var(--text-muted); line-height: 1.8; margin-bottom: 28px; max-width: 600px; }
+    .hero-p strong { color: var(--text-bright); font-weight: 600; }
+
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 500;
+      padding: 6px 14px; border-radius: var(--r-pill);
+      background: var(--surface-1); border: 1px solid var(--border); color: var(--text-bright);
+      transition: transform .2s, border-color .2s;
+    }
+    .badge:hover { transform: translateY(-2px); }
+    .badge i { font-size: 12px; }
+    .badge.c-blue i { color: var(--blue); }    .badge.c-blue:hover { border-color: var(--blue); }
+    .badge.c-red i { color: var(--red); }      .badge.c-red:hover { border-color: var(--red); }
+    .badge.c-yellow i { color: var(--yellow); } .badge.c-yellow:hover { border-color: var(--yellow); }
+    .badge.c-green i { color: var(--green); }  .badge.c-green:hover { border-color: var(--green); }
+    .badge.gdg {
+      border: 1px solid transparent;
+      background:
+        linear-gradient(var(--surface-1), var(--surface-1)) padding-box,
+        linear-gradient(90deg, var(--g-blue), var(--g-red), var(--g-yellow), var(--g-green)) border-box;
+    }
+
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 12px 24px; border-radius: var(--r-pill); font-weight: 600; font-size: 14.5px;
+      text-decoration: none; transition: all .2s; border: 1px solid transparent; cursor: pointer; font-family: inherit;
+    }
+    .btn-primary { color: #fff; background: var(--g-blue); }
+    .btn-primary:hover { background: #5a95f5; box-shadow: 0 6px 24px rgba(66, 133, 244, 0.4); transform: translateY(-2px); }
+    .btn-tonal { color: var(--text-bright); background: var(--surface-2); border-color: var(--border); }
+    .btn-tonal:hover { background: var(--surface-3); transform: translateY(-2px); }
+    .btn-tonal .fa-google { background: conic-gradient(from -45deg, var(--g-red) 0 25%, var(--g-yellow) 0 50%, var(--g-green) 0 75%, var(--g-blue) 0 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+    /* Kod penceresi */
+    .term {
+      background: var(--surface-1); border: 1px solid var(--border-strong); border-radius: var(--r-lg);
+      overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      transition: transform .3s, box-shadow .3s; position: relative;
+    }
+    .term::before {
+      content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; pointer-events: none;
+      background: linear-gradient(135deg, rgba(66,133,244,.6), transparent 35%, transparent 65%, rgba(52,168,83,.5));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+    }
+    .term:hover { transform: translateY(-4px); box-shadow: 0 30px 70px rgba(0,0,0,0.55), 0 0 40px rgba(66,133,244,0.08); }
+    .term-head {
+      background: var(--surface-2); padding: 13px 18px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+    .dots { display: flex; gap: 7px; }
+    .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .dot:nth-child(1) { background: var(--g-red); } .dot:nth-child(2) { background: var(--g-yellow); } .dot:nth-child(3) { background: var(--g-green); }
+    .term-title { font-family: var(--font-mono); font-size: 12px; color: var(--text-muted); }
+    .term-body { padding: 22px 24px; font-family: var(--font-mono); font-size: 12.8px; line-height: 1.8; overflow-x: auto; white-space: pre; color: var(--text); }
+    .tc { color: var(--text-dim); font-style: italic; } .tk { color: #c58af9; } .tv { color: var(--text-bright); }
+    .ts { color: var(--green); } .tp { color: var(--blue); } .tb { color: var(--yellow); }
+
+    /* İstatistik şeridi */
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 64px; }
+    .stat {
+      background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-md);
+      padding: 18px 20px; position: relative; overflow: hidden;
+    }
+    .stat::after { content: ''; position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--c); opacity: .85; }
+    .stat-n { font-size: 30px; font-weight: 700; color: var(--text-bright); letter-spacing: -0.02em; line-height: 1.1; }
+    .stat-n span { color: var(--c); }
+    .stat-l { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+    /* ================= SECTIONS ================= */
+    section { padding: 80px 0; scroll-margin-top: 60px; }
+    .sec-head { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 36px; }
+    .sec-num {
+      flex-shrink: 0; width: 48px; height: 48px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-weight: 700; font-size: 15px;
+      color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    }
+    .sec-title { font-size: 34px; font-weight: 700; color: var(--text-bright); letter-spacing: -0.025em; line-height: 1.15; }
+    .sec-sub { font-size: 14.5px; color: var(--text-muted); margin-top: 6px; }
+    .sec-sub code { font-family: var(--font-mono); font-size: 12.5px; color: var(--accent); background: var(--surface-2); padding: 2px 8px; border-radius: 6px; margin-right: 6px; }
+
+    .s-blue   { --accent: var(--blue);   --accent-solid: var(--g-blue); }
+    .s-red    { --accent: var(--red);    --accent-solid: var(--g-red); }
+    .s-yellow { --accent: var(--yellow); --accent-solid: var(--g-yellow); }
+    .s-green  { --accent: var(--green);  --accent-solid: var(--g-green); }
+
+    .card {
+      background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-lg);
+      padding: 26px 28px; transition: transform .25s, border-color .25s, background .25s; position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 28px; right: 28px; height: 2px;
+      background: var(--accent); opacity: 0; transition: opacity .25s; border-radius: 0 0 2px 2px;
+    }
+    .card:hover { border-color: color-mix(in srgb, var(--accent) 35%, transparent); background: var(--surface-2); transform: translateY(-3px); }
+    .card:hover::before { opacity: 1; }
+
+    .card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; gap: 14px; }
+    .card-t { font-size: 18px; font-weight: 700; color: var(--text-bright); letter-spacing: -0.01em; line-height: 1.35; }
+    .card-org { font-size: 14px; color: var(--accent); font-weight: 500; margin-top: 3px; }
+    .card-date {
+      font-size: 12.5px; color: var(--text-bright); font-weight: 500;
+      white-space: nowrap; background: var(--surface-3); padding: 5px 12px; border-radius: var(--r-pill);
+    }
+    .card-list { list-style: none; margin-top: 14px; }
+    .card-list li { padding-left: 22px; position: relative; font-size: 14.5px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.7; }
+    .card-list li::before {
+      content: ''; position: absolute; left: 4px; top: 10px; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .card-list li strong { color: var(--text-bright); font-weight: 600; }
+    .card-ico {
+      width: 46px; height: 46px; border-radius: 14px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+      color: var(--ic, var(--accent)); background: color-mix(in srgb, var(--ic, var(--accent)) 14%, transparent);
+    }
+    .card-top { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+
+    .cards-stack { display: grid; gap: 18px; }
+    .cards-2col { grid-template-columns: 1fr 1fr; }
+
+    /* GDG öne çıkan kart */
+    .card-gdg {
+      border: 1px solid transparent;
+      background:
+        linear-gradient(var(--surface-1), var(--surface-1)) padding-box,
+        linear-gradient(120deg, rgba(66,133,244,.7), rgba(234,67,53,.5), rgba(251,188,4,.5), rgba(52,168,83,.7)) border-box;
+    }
+    .card-gdg:hover {
+      background:
+        linear-gradient(var(--surface-2), var(--surface-2)) padding-box,
+        linear-gradient(120deg, var(--g-blue), var(--g-red), var(--g-yellow), var(--g-green)) border-box;
+    }
+    .card-gdg::before { display: none; }
+    .card-gdg .gdg-glow {
+      position: absolute; right: -60px; top: -60px; width: 220px; height: 220px; border-radius: 50%; pointer-events: none;
+      background: conic-gradient(from 0deg, rgba(66,133,244,.18), rgba(234,67,53,.14), rgba(251,188,4,.14), rgba(52,168,83,.18), rgba(66,133,244,.18));
+      filter: blur(40px);
+    }
+    .gdg-mark { width: 46px; height: 46px; border-radius: 14px; background: var(--surface-3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .gdg-mark svg { width: 30px; height: 20px; }
+
+    /* Zaman çizelgesi */
+    .tl { position: relative; padding-left: 34px; }
+    .tl::before { content: ''; position: absolute; left: 10px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(180deg, var(--g-blue), var(--g-green)); border-radius: 2px; opacity: .6; }
+    .tl-node { margin-bottom: 20px; }
+    .tl-node::after {
+      content: ''; position: absolute; left: -31px; top: 30px; width: 14px; height: 14px; border-radius: 50%;
+      background: var(--bg); border: 3px solid var(--accent); z-index: 2;
+    }
+    .tl-node:nth-child(2) { --accent: var(--green); }
+    .tl .card { overflow: visible; }
+
+    /* Yetkinlikler */
+    .sk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .sk-card { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px 26px; transition: all .25s; }
+    .sk-card:hover { border-color: color-mix(in srgb, var(--ic) 40%, transparent); transform: translateY(-3px); background: var(--surface-2); }
+    .sk-head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .sk-title { font-size: 17px; font-weight: 700; color: var(--text-bright); }
+    .sk-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500;
+      padding: 5px 13px; border-radius: var(--r-pill);
+      background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+      transition: all .2s;
+    }
+    .pill:hover { border-color: var(--border-strong); color: var(--text-bright); }
+    .pill-blue   { color: var(--blue);   background: rgba(138,180,248,.10); border-color: rgba(138,180,248,.25); }
+    .pill-red    { color: var(--red);    background: rgba(242,139,130,.10); border-color: rgba(242,139,130,.25); }
+    .pill-yellow { color: var(--yellow); background: rgba(253,214,99,.10);  border-color: rgba(253,214,99,.25); }
+    .pill-green  { color: var(--green);  background: rgba(129,201,149,.10); border-color: rgba(129,201,149,.25); }
+    .pill-gdg { color: var(--text-bright); border: 1px solid transparent;
+      background: linear-gradient(var(--surface-2), var(--surface-2)) padding-box, linear-gradient(90deg, var(--g-blue), var(--g-red), var(--g-yellow), var(--g-green)) border-box; }
+
+    /* Başarılar */
+    .honors { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .honor {
+      display: flex; gap: 16px; align-items: flex-start; padding: 20px 22px;
+      background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-md);
+      transition: all .25s;
+    }
+    .honor:hover { border-color: color-mix(in srgb, var(--hc) 40%, transparent); background: var(--surface-2); transform: translateY(-2px); }
+    .honor:last-child { grid-column: 1 / -1; }
+    .honor-ico {
+      font-size: 22px; width: 46px; height: 46px; flex-shrink: 0; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      background: color-mix(in srgb, var(--hc) 14%, transparent);
+    }
+    .honor-t { font-size: 16px; font-weight: 700; color: var(--text-bright); line-height: 1.4; }
+    .honor-d { font-size: 14px; color: var(--text-muted); margin-top: 5px; line-height: 1.65; }
+
+    /* İletişim */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .contact-card { background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 30px; }
+    .contact-card h3 { font-size: 20px; font-weight: 700; color: var(--text-bright); margin-bottom: 22px; }
+    .c-method { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .c-method > i {
+      width: 44px; height: 44px; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      border-radius: 14px; font-size: 16px;
+      color: var(--mc); background: color-mix(in srgb, var(--mc) 14%, transparent);
+    }
+    .c-label { font-size: 12px; color: var(--text-dim); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+    .c-val { font-size: 15px; color: var(--text-bright); }
+    .c-val a { color: var(--blue); text-decoration: none; }
+    .c-val a:hover { text-decoration: underline; }
+
+    .form-group { margin-bottom: 14px; position: relative; }
+    .form-label { display: block; font-size: 12.5px; color: var(--text-muted); margin-bottom: 6px; font-weight: 500; }
+    .form-input, .form-textarea {
+      width: 100%; padding: 12px 16px;
+      background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 12px;
+      color: var(--text-bright); font-family: inherit; font-size: 14.5px;
+      transition: border-color .2s, box-shadow .2s; outline: none;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-dim); }
+    .form-input:focus, .form-textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(138, 180, 248, 0.18); }
+    .form-textarea { min-height: 120px; resize: vertical; }
+    .btn-send {
+      width: 100%; padding: 14px; border: none; border-radius: var(--r-pill);
+      background: var(--g-blue); color: #fff;
+      font-family: inherit; font-size: 15px; font-weight: 600;
+      cursor: pointer; transition: all .2s; margin-top: 4px;
+    }
+    .btn-send:hover { background: #5a95f5; box-shadow: 0 6px 22px rgba(66, 133, 244, 0.4); transform: translateY(-1px); }
+
+    .soc-row { display: flex; gap: 10px; margin-top: 18px; }
+    .soc {
+      width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border-strong); border-radius: 50%; color: var(--text-muted);
+      font-size: 16px; text-decoration: none; transition: all .2s; background: transparent;
+    }
+    .soc:hover { color: #fff; background: var(--hover, var(--g-blue)); border-color: transparent; transform: translateY(-2px); }
+
+    /* Footer */
+    .footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 36px 24px 30px; text-align: center; }
+    .footer .soc-row { justify-content: center; margin: 0 0 16px; }
+    .footer p { font-size: 13.5px; color: var(--text-dim); }
+    .footer a { color: var(--text-muted); text-decoration: none; }
+    .footer a:hover { color: var(--blue); }
+    .footer .heart { color: var(--g-red); }
+    .footer-g { display: inline-flex; gap: 4px; margin-top: 14px; }
+    .footer-g i { width: 6px; height: 6px; border-radius: 50%; display: block; }
+
+    /* Animasyon */
+    .fi { opacity: 0; transform: translateY(24px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+    .fi.on { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .fi { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 1020px) {
+      .nav-a { padding: 8px 9px; font-size: 13px; }
+    }
+    @media (max-width: 900px) {
+      .hero-grid, .cards-2col, .sk-grid, .contact-grid, .honors { grid-template-columns: 1fr; }
+      .honor:last-child { grid-column: auto; }
+      .hero-title { font-size: 48px; }
+      .stats { grid-template-columns: repeat(2, 1fr); margin-top: 40px; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--surface-1); border-bottom: 1px solid var(--border); flex-direction: column; align-items: stretch; padding: 12px; gap: 4px; }
+      .nav-links.open { display: flex; }
+      .nav-a { padding: 11px 16px; font-size: 15px; }
+      .hamburger { display: inline-flex; align-items: center; justify-content: center; }
+    }
+    @media (max-width: 560px) {
+      .hero { padding: 44px 0 24px; min-height: auto; }
+      .hero-title { font-size: 38px; }
+      .sec-title { font-size: 26px; }
+      .nav-logo small, .nav-cv-btn span { display: none; }
+      .card { padding: 22px 20px; }
+      .card-head { flex-direction: column; }
+      .term-body { font-size: 11.5px; padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- NAVBAR -->
+<header class="nav">
+  <div class="g-stripe"><span></span><span></span><span></span><span></span></div>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo" aria-label="Ana sayfa">
+      <svg viewBox="0 0 34 22" aria-hidden="true">
+        <g fill="none" stroke-width="4.2" stroke-linecap="round">
+          <path d="M12 3 L3 11" stroke="#ea4335"/>
+          <path d="M3 11 L12 19" stroke="#4285f4"/>
+          <path d="M22 3 L31 11" stroke="#34a853"/>
+          <path d="M31 11 L22 19" stroke="#fbbc04"/>
+        </g>
+      </svg>
+      <span class="txt">Ayşegül Nalkesen<small>GDG on Campus · Kayseri Üni.</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about" class="nav-a">Hakkımda</a>
+      <a href="#community" class="nav-a">Topluluk & GDG</a>
+      <a href="#experience" class="nav-a">Deneyim</a>
+      <a href="#skills" class="nav-a">Yetkinlikler</a>
+      <a href="#projects" class="nav-a">Projeler</a>
+      <a href="#achievements" class="nav-a">Başarılar</a>
+      <a href="#contact" class="nav-a">İletişim</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="Aysegul_Nalkesen_CV_TR.pdf" download="Aysegul_Nalkesen_CV_TR.pdf" class="nav-cv-btn" title="CV'mi PDF Olarak İndir">
+        <i class="fa-solid fa-download"></i> <span>CV</span>
+      </a>
+      <a href="cv-en.html" class="nav-lang" title="Switch to English">EN</a>
+      <button class="hamburger" id="hamburger" aria-label="Menüyü Aç"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-chip">
+          <span class="gdots"><i></i><i></i><i></i><i></i></span>
+          <span>Kayseri Üniversitesi • Yazılım Mühendisliği</span>
+        </div>
+
+        <p class="hero-hello">Merhaba, ben 👋</p>
+        <h1 class="hero-title">
+          Ayşegül<br>
+          <span class="g-gradient">Nalkesen</span>
+        </h1>
+
+        <div class="hero-type"><span class="pre">&gt;</span><span id="typed"></span><span class="cur"></span></div>
+
+        <p class="hero-p">
+          Kayseri Üniversitesi Yazılım Mühendisliği öğrencisiyim. 10 yılı aşkın Kick Boks Siyah Kuşak disiplinimi, Erasmus ve sosyal girişimcilik tecrübelerimi teknoloji dünyasına taşıyorum. <strong>Google Developer Groups (GDG)</strong> teknik ekibinde yer alarak Google desteğiyle önümüzdeki ay düzenleyeceğimiz <strong>DevFest</strong> konferansının teknik koordinasyonunu yürütüyorum. Ayrıca <strong>Bilişim Kulübü</strong> teknik ve organizasyon ekibinde akranlarıma uygulamalı <strong>Arduino</strong> ve <strong>Siber Güvenlik</strong> eğitimleri veriyorum.
+        </p>
+
+        <div class="badges">
+          <span class="badge gdg"><i class="fa-brands fa-google" style="color:var(--blue)"></i> GDG Teknik Ekip & DevFest</span>
+          <span class="badge c-blue"><i class="fa-solid fa-microchip"></i> Arduino & Siber Güvenlik Eğitmeni</span>
+          <span class="badge c-green"><i class="fa-solid fa-compass"></i> TEINN Kaşifi</span>
+          <span class="badge c-red"><i class="fa-solid fa-hand-fist"></i> Kick Boks Siyah Kuşak 1. Dan</span>
+          <span class="badge c-yellow"><i class="fa-solid fa-earth-europe"></i> Erasmus PQL</span>
+        </div>
+
+        <div class="hero-btns">
+          <a href="Aysegul_Nalkesen_CV_TR.pdf" download="Aysegul_Nalkesen_CV_TR.pdf" class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i> CV İndir (PDF)</a>
+          <a href="#community" class="btn btn-tonal"><i class="fa-brands fa-google"></i> GDG & DevFest</a>
+          <a href="#contact" class="btn btn-tonal"><i class="fa-regular fa-paper-plane"></i> İletişime Geç</a>
+        </div>
+      </div>
+
+      <!-- KOD PENCERESİ -->
+      <div>
+        <div class="term">
+          <div class="term-head">
+            <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <span class="term-title">aysegul.config.js</span>
+            <i class="fa-brands fa-js" style="color:var(--g-yellow);font-size:15px"></i>
+          </div>
+          <div class="term-body"><span class="tc">// geliştirici profili & topluluk bilgisi</span>
+<span class="tk">const</span> <span class="tv">aysegul</span> = {
+  <span class="tp">name</span>: <span class="ts">"Ayşegül Nalkesen"</span>,
+  <span class="tp">role</span>: <span class="ts">"Yazılım Mühendisliği Öğrencisi"</span>,
+  <span class="tp">university</span>: <span class="ts">"Kayseri Üniversitesi"</span>,
+  <span class="tp">gdg</span>: <span class="ts">"GDG Teknik Ekip & DevFest 🚀"</span>,
+  <span class="tp">it_club</span>: <span class="ts">"Arduino & Siber Güvenlik 💻"</span>,
+  <span class="tp">sport</span>: <span class="ts">"Kick Boks Siyah Kuşak 1. Dan 🥋"</span>,
+  <span class="tp">skills</span>: <span class="tb">[</span>
+    <span class="ts">"Python"</span>, <span class="ts">"C/C++"</span>,
+    <span class="ts">"Arduino / IoT"</span>, <span class="ts">"Siber Güvenlik"</span>,
+    <span class="ts">"HTML/CSS/JS"</span>, <span class="ts">"Git & GitHub"</span>
+  <span class="tb">]</span>,
+  <span class="tp">honors</span>: <span class="tb">[</span>
+    <span class="ts">"TEINN Kaşif Programı 🚀"</span>,
+    <span class="ts">"Erasmus Pupil Quality Label 🇪🇺"</span>,
+    <span class="ts">"Bilgi Yarışması 1.liği 🏆"</span>
+  <span class="tb">]</span>,
+  <span class="tp">motto</span>: <span class="ts">"Disiplin + Kod + Topluluk"</span>
+};
+
+<span class="tk">export default</span> <span class="tv">aysegul</span>;</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat" style="--c:var(--g-blue)"><div class="stat-n">GDG<span>.</span></div><div class="stat-l">Teknik Ekip & DevFest</div></div>
+      <div class="stat" style="--c:var(--g-red)"><div class="stat-n">10<span>+</span></div><div class="stat-l">Yıl Kick Boks · Siyah Kuşak</div></div>
+      <div class="stat" style="--c:var(--g-yellow)"><div class="stat-n">2<span>×</span></div><div class="stat-l">Uluslararası Erasmus Projesi</div></div>
+      <div class="stat" style="--c:var(--g-green)"><div class="stat-n">4<span>+</span></div><div class="stat-l">Proje & Girişim</div></div>
+    </div>
+  </section>
+
+  <!-- EĞİTİM & HAKKIMDA -->
+  <section id="about" class="fi s-blue">
+    <div class="sec-head">
+      <div class="sec-num">01</div>
+      <div>
+        <h2 class="sec-title">Eğitim & Hakkımda</h2>
+        <p class="sec-sub"><code>cat ./eğitim-ve-hakkımda.md</code>Akademik yol haritası ve temel bilgiler</p>
+      </div>
+    </div>
+    <div class="tl">
+      <div class="tl-node card">
+        <div class="card-head">
+          <div>
+            <div class="card-t">Kayseri Üniversitesi</div>
+            <div class="card-org">Mühendislik, Mimarlık ve Tasarım Fakültesi — Yazılım Mühendisliği (Lisans)</div>
+          </div>
+          <span class="card-date">2024 – Günümüz</span>
+        </div>
+        <ul class="card-list">
+          <li>Algoritmalar ve Veri Yapıları, Nesne Yönelimli Programlama (OOP), Yazılım Mimarisi temelleri.</li>
+          <li>Kayseri Üniversitesi bünyesindeki teknoloji topluluklarında aktif öğrenme ve proje üretimi.</li>
+        </ul>
+      </div>
+      <div class="tl-node card">
+        <div class="card-head">
+          <div>
+            <div class="card-t">Çakmaklı Cumhuriyet Anadolu Lisesi</div>
+            <div class="card-org">Sayısal Alan • Girişimcilik Kulübü Kaptanı & MUN Organizatörü</div>
+          </div>
+          <span class="card-date">2020 – 2024</span>
+        </div>
+        <ul class="card-list">
+          <li>Girişimcilik Kulübü Kurucu Kaptanı; münazara ve Model United Nations (MUN) organizasyonlarının yürütülmesi.</li>
+          <li>Liseler Arası Bilgi Yarışması Şampiyonluğu (1.lik) 🏆</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPLULUK & TEKNİK LİDERLİK -->
+  <section id="community" class="fi s-red">
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div>
+        <h2 class="sec-title">Topluluk & Teknik Liderlik</h2>
+        <p class="sec-sub"><code>view ./topluluklar/teknik-liderlik.log</code>Google Developer Groups, DevFest & Bilişim Kulübü</p>
+      </div>
+    </div>
+    <div class="cards-stack">
+      <div class="card card-gdg s-blue">
+        <div class="gdg-glow"></div>
+        <div class="card-head">
+          <div class="card-top">
+            <div class="gdg-mark">
+              <svg viewBox="0 0 34 22" aria-hidden="true">
+                <g fill="none" stroke-width="4.2" stroke-linecap="round">
+                  <path d="M12 3 L3 11" stroke="#ea4335"/><path d="M3 11 L12 19" stroke="#4285f4"/>
+                  <path d="M22 3 L31 11" stroke="#34a853"/><path d="M31 11 L22 19" stroke="#fbbc04"/>
+                </g>
+              </svg>
+            </div>
+            <div>
+              <div class="card-t">Google Developer Groups (GDG on Campus) — Kayseri Üniversitesi</div>
+              <div class="card-org">Teknik Ekip Üyesi & DevFest Organizasyon Ekibi</div>
+            </div>
+          </div>
+          <span class="card-date">Eki 2024 – Günümüz</span>
+        </div>
+        <ul class="card-list">
+          <li>Google desteğiyle önümüzdeki ay kampüsümüzde düzenleyeceğimiz büyük <strong>DevFest</strong> konferansının teknik altyapı, sahne akışı ve atölye planlama ekibinde aktif görev alıyorum.</li>
+          <li>Geliştirici topluluğuna modern yazılım pratikleri, web araçları ve Google ekosistemi üzerine akran rehberliği sağlıyorum.</li>
+          <li>Kayseri'deki yazılım ekosistemini ve mühendislik öğrencilerini bir araya getiren teknik etkinliklerin mimarisinde rol alıyorum.</li>
+        </ul>
+        <div style="margin-top:16px" class="sk-pills">
+          <span class="pill pill-gdg"><i class="fa-brands fa-google"></i> GDG on Campus</span>
+          <span class="pill pill-blue"><i class="fa-solid fa-rocket"></i> DevFest 2024</span>
+          <span class="pill pill-green">Teknik Koordinasyon</span>
+          <span class="pill pill-yellow">Google Teknolojileri</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-top">
+            <div class="card-ico"><i class="fa-solid fa-microchip"></i></div>
+            <div>
+              <div class="card-t">Kayseri Üniversitesi Bilişim Kulübü</div>
+              <div class="card-org">Teknik & Organizasyon Ekibi Üyesi / Eğitmen</div>
+            </div>
+          </div>
+          <span class="card-date">Eki 2024 – Günümüz</span>
+        </div>
+        <ul class="card-list">
+          <li>Kulübün teknik ve organizasyon ekibine kabul alarak kulüp öğrencilerine yönelik uygulamalı <strong>Arduino (IoT / Gömülü Sistemler)</strong> ve <strong>Siber Güvenlik Temelleri</strong> eğitimleri veriyorum.</li>
+          <li>Öğrencilerin teorik bilgiyi somut donanım projelerine dönüştürmelerini sağlayan atölyeler ve laboratuvar çalışmaları tasarlıyorum.</li>
+          <li>Üniversite genelinde düzenlenecek teknik seminer, çalıştay ve hackathonların operasyonel hazırlıklarını koordine ediyorum.</li>
+        </ul>
+        <div style="margin-top:16px" class="sk-pills">
+          <span class="pill pill-blue"><i class="fa-solid fa-microchip"></i> Arduino Eğitmeni</span>
+          <span class="pill pill-red"><i class="fa-solid fa-shield-halved"></i> Siber Güvenlik</span>
+          <span class="pill">Teknik Atölye</span>
+          <span class="pill">Organizasyon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DENEYİM & LİDERLİK -->
+  <section id="experience" class="fi s-yellow">
+    <div class="sec-head">
+      <div class="sec-num">03</div>
+      <div>
+        <h2 class="sec-title">Deneyim & Liderlik</h2>
+        <p class="sec-sub"><code>ls -la ./deneyimler/</code>Liderlik rolleri, girişimcilik ve saha deneyimleri</p>
+      </div>
+    </div>
+    <div class="cards-stack">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-t">Girişimcilik Kulübü Kaptanı & Proje Ekibi</div>
+            <div class="card-org">Kale Grubu — Sosyal Girişimcilik Programı</div>
+          </div>
+          <span class="card-date">Eki 2023 – Nis 2024</span>
+        </div>
+        <ul class="card-list">
+          <li>Girişimcilik Kulübü Kaptanı olarak takımımla birlikte sosyal inovasyon odaklı <strong>2 farklı projede aktif görev aldık</strong>.</li>
+          <li>Ekip içi veri analizi, risk tespiti ve kullanıcı deneyimi süreçlerine katılarak projelerin gelişimine katkı sağladım.</li>
+          <li>Fikirlerin fizibilite çalışmalarını ve jüri sunum süreçlerini ekip halinde başarıyla tamamladık.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-t">Ekip Lideri & Münazara Topluluğu Kurucusu</div>
+            <div class="card-org">Çakmaklı CAL Öğrenci Toplulukları</div>
+          </div>
+          <span class="card-date">Eki 2023 – Haz 2024</span>
+        </div>
+        <ul class="card-list">
+          <li>Münazara ve MUN ekibini koordine ederek haftalık beyin fırtınaları ve görev dağılımlarını yürüttüm.</li>
+          <li>Okul genelinde münazara ligleri ve Model United Nations simülasyonları düzenleyerek akranların ifade gücüne katkı sundum.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-t">Satış Danışmanı (Yarı Zamanlı)</div>
+            <div class="card-org">English Home</div>
+          </div>
+          <span class="card-date">Ağu – Eyl 2024</span>
+        </div>
+        <ul class="card-list">
+          <li>Aylık ortalama <strong>800.000 TL ciro hacmine</strong> katkı; tüketici analizi, ikna kabiliyeti ve saha kriz yönetimi.</li>
+          <li>Pazar dinamiklerini hızla kavrayarak hedef odaklı çözümler sundum ve takım performansını destekledim.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- YETKİNLİKLER -->
+  <section id="skills" class="fi s-green">
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div>
+        <h2 class="sec-title">Yetkinlikler</h2>
+        <p class="sec-sub"><code>neofetch --skills</code>Teknik beceriler, topluluk yetkinlikleri ve sporcu disiplini</p>
+      </div>
+    </div>
+    <div class="sk-grid">
+      <div class="sk-card" style="--ic:var(--blue)">
+        <div class="sk-head">
+          <div class="card-ico"><i class="fa-solid fa-code"></i></div>
+          <div class="sk-title">Yazılım & Programlama</div>
+        </div>
+        <div class="sk-pills">
+          <span class="pill pill-blue">Python</span>
+          <span class="pill pill-blue">C / C++</span>
+          <span class="pill">Algoritmalar</span>
+          <span class="pill">Veri Yapıları</span>
+          <span class="pill">OOP Mantığı</span>
+        </div>
+      </div>
+      <div class="sk-card" style="--ic:var(--red)">
+        <div class="sk-head">
+          <div class="card-ico"><i class="fa-solid fa-globe"></i></div>
+          <div class="sk-title">Web & Geliştirme Araçları</div>
+        </div>
+        <div class="sk-pills">
+          <span class="pill pill-red">HTML5</span>
+          <span class="pill pill-red">CSS3</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">Git & GitHub</span>
+          <span class="pill">VS Code</span>
+        </div>
+      </div>
+      <div class="sk-card" style="--ic:var(--yellow)">
+        <div class="sk-head">
+          <div class="card-ico"><i class="fa-solid fa-users-gear"></i></div>
+          <div class="sk-title">Topluluk & Liderlik</div>
+        </div>
+        <div class="sk-pills">
+          <span class="pill pill-gdg">GDG Organizasyon</span>
+          <span class="pill">Takım Kaptanlığı</span>
+          <span class="pill">Proje Geliştirme</span>
+          <span class="pill">MUN & Münazara</span>
+          <span class="pill">Etkili İletişim</span>
+        </div>
+      </div>
+      <div class="sk-card" style="--ic:var(--green)">
+        <div class="sk-head">
+          <div class="card-ico"><i class="fa-solid fa-hand-fist"></i></div>
+          <div class="sk-title">Sporcu Disiplini & Soft Skills</div>
+        </div>
+        <div class="sk-pills">
+          <span class="pill pill-green">10+ Yıl Kick Boks</span>
+          <span class="pill">Siyah Kuşak 1. Dan</span>
+          <span class="pill">Kriz Yönetimi</span>
+          <span class="pill">Çevik Düşünce</span>
+          <span class="pill">Yüksek Odaklanma</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJELER -->
+  <section id="projects" class="fi s-blue">
+    <div class="sec-head">
+      <div class="sec-num">05</div>
+      <div>
+        <h2 class="sec-title">Projeler</h2>
+        <p class="sec-sub"><code>git log --oneline ./projeler</code>Geliştirilen ve üzerinde çalışılan projeler</p>
+      </div>
+    </div>
+    <div class="cards-stack cards-2col">
+
+      <!-- PROJE 1: TÜRK İŞARET DİLİ (TİD) -->
+      <div class="card" style="--accent:var(--blue)">
+        <div class="card-top">
+          <div class="card-ico"><i class="fa-solid fa-hands-asl-interpreting"></i></div>
+          <div>
+            <div class="card-t">Türk İşaret Dili (TİD) Çeviri & İletişim Asistanı</div>
+            <div class="card-org">Erişilebilirlik & Yapay Zeka / Görüntü İşleme Projesi</div>
+          </div>
+        </div>
+        <ul class="card-list">
+          <li>İşitme engelli bireyler ile toplum arasındaki iletişim bariyerlerini azaltmayı ve Türk İşaret Dili (TİD) farkındalığını artırmayı hedefleyen dijital asistan konsepti.</li>
+          <li>Kamera üzerinden el hareketleri ve işaret dili jestlerini algılayarak metne/sese dönüştürmeyi amaçlayan görüntü işleme ve yapay zeka modelleme çalışmaları.</li>
+          <li>Kapsayıcı, kullanıcı dostu arayüz ve toplum yararına teknoloji geliştirme vizyonu.</li>
+        </ul>
+        <div style="margin-top:16px" class="sk-pills">
+          <span class="pill pill-blue">TİD</span>
+          <span class="pill pill-blue">Görüntü İşleme</span>
+          <span class="pill">Yapay Zeka</span>
+          <span class="pill">Python</span>
+          <span class="pill pill-green">Sosyal Fayda</span>
+        </div>
+      </div>
+
+      <!-- PROJE 2: AKILLI GARDIROP -->
+      <div class="card" style="--accent:var(--red)">
+        <div class="card-top">
+          <div class="card-ico"><i class="fa-solid fa-microchip"></i></div>
+          <div>
+            <div class="card-t">Akıllı Gardırop (Smart Wardrobe)</div>
+            <div class="card-org">Nişantaşı Üniversitesi Fikir Festivali</div>
+          </div>
+        </div>
+        <ul class="card-list">
+          <li>Giyim envanterini dijitalleştirip hava durumu ve stil algoritmalarıyla otomatik kombin öneren IoT konsept tasarımı.</li>
+          <li>İş modeli kanvası (BMC), değer önerisi ve teknik mimari sunumu hazırlandı.</li>
+        </ul>
+        <div style="margin-top:16px" class="sk-pills">
+          <span class="pill pill-red">IoT</span><span class="pill">Algoritma</span><span class="pill">İnovasyon</span>
+        </div>
+      </div>
+
+      <!-- PROJE 3: SOSYAL GİRİŞİMCİLİK -->
+      <div class="card" style="--accent:var(--green)">
+        <div class="card-top">
+          <div class="card-ico"><i class="fa-solid fa-seedling"></i></div>
+          <div>
+            <div class="card-t">Sosyal Girişimcilik Projeleri</div>
+            <div class="card-org">Kale Grubu Sosyal Girişimcilik Zirvesi</div>
+          </div>
+        </div>
+        <ul class="card-list">
+          <li>Girişimcilik Kulübü Kaptanı olarak takımımla birlikte sosyal inovasyon odaklı 2 farklı sürdürülebilir projede aktif görev aldık.</li>
+          <li>Sorun tespiti, saha araştırması ve jüri sunum süreçleri başarıyla yürütüldü.</li>
+        </ul>
+        <div style="margin-top:16px" class="sk-pills">
+          <span class="pill pill-green">Sosyal İnovasyon</span><span class="pill">Takım Çalışması</span><span class="pill">Liderlik</span>
+        </div>
+      </div>
+
+      <!-- PROJE 4: PORTFOLYO -->
+      <div class="card" style="--accent:var(--yellow)">
+        <div class="card-top">
+          <div class="card-ico"><i class="fa-solid fa-globe"></i></div>
+          <div>
+            <div class="card-t">İnteraktif Portfolyo Platformu</div>
+            <div class="card-org"><a href="https://github.com/ghost-ayse" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">github.com/ghost-ayse <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px"></i></a></div>
+          </div>
+        </div>
+        <ul class="card-list">
+          <li>Modern web mimarisiyle responsive, GDG ve TİD projelerini sergileyen güncel portfolyo.</li>
+          <li>Git versiyon kontrol sistemi ve mobil öncelikli tasarım prensibi uygulandı.</li>
+        </ul>
+        <div style="margin-top:16px" class="sk-pills">
+          <span class="pill pill-yellow">HTML5</span><span class="pill">CSS3</span><span class="pill">JavaScript</span><span class="pill">Git</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BAŞARILAR & ETKİNLİKLER -->
+  <section id="achievements" class="fi s-red">
+    <div class="sec-head">
+      <div class="sec-num">06</div>
+      <div>
+        <h2 class="sec-title">Başarılar & Etkinlikler</h2>
+        <p class="sec-sub"><code>grep -r 'başarı' ./hayat/</code>Ödüller, sertifikalar ve zirve katılımları</p>
+      </div>
+    </div>
+    <div class="honors">
+      <div class="honor" style="--hc:var(--g-blue)"><div class="honor-ico">🚀</div><div><div class="honor-t">TEINN Kaşif Programı (Teams in Innovation)</div><div class="honor-d">Yenilikçi girişimcilik, ekosistem analizi ve startup ağlarını keşfetmeye odaklanan programa seçilerek "TEINN Kaşifi" unvanı kazanıldı.</div></div></div>
+      <div class="honor" style="--hc:var(--g-yellow)"><div class="honor-ico">🇪🇺</div><div><div class="honor-t">Erasmus Pupil Quality Label</div><div class="honor-d">Avrupa Komisyonu onaylı kalite etiketi. 2 farklı uluslararası Erasmus projesinde proje yazımı ve Türkiye koordinasyonu.</div></div></div>
+      <div class="honor" style="--hc:var(--g-red)"><div class="honor-ico">🥋</div><div><div class="honor-t">Kick Boks Siyah Kuşak 1. Dan (10+ Yıl)</div><div class="honor-d">On yılı aşkın sürede kazanılan odaklanma, mental dayanıklılık, kriz anında soğukkanlı karar alma ve yüksek disiplin.</div></div></div>
+      <div class="honor" style="--hc:var(--g-green)"><div class="honor-ico">🏆</div><div><div class="honor-t">Liseler Arası Bilgi Yarışması 1.liği</div><div class="honor-d">Hızlı analiz, takım çalışması ve geniş analitik muhakeme ile şampiyonluk.</div></div></div>
+      <div class="honor" style="--hc:var(--g-blue)"><div class="honor-ico">🎓</div><div><div class="honor-t">Seçkin Zirve ve Gelişim Programları</div><div class="honor-d">Boğaziçi Savunma Sanayi Zirvesi • İTÜ Girişimcilik Festivali • Abdi İbrahim "Geleceği Keşfedenler" • Galatasaray Üniv. Felsefe & Mantık Seminerleri</div></div></div>
+    </div>
+  </section>
+
+  <!-- İLETİŞİM -->
+  <section id="contact" class="fi s-green">
+    <div class="sec-head">
+      <div class="sec-num">07</div>
+      <div>
+        <h2 class="sec-title">İletişim</h2>
+        <p class="sec-sub"><code>ssh bağlan@iletişim</code>İletişim kanalları açılıyor...</p>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Bana Ulaşın</h3>
+        <div class="c-method"><i class="fa-solid fa-envelope" style="--mc:var(--red)"></i><div><div class="c-label">E-Posta</div><div class="c-val"><a href="mailto:aysenalkesen7@gmail.com">aysenalkesen7@gmail.com</a></div></div></div>
+        <div class="c-method"><i class="fa-solid fa-phone" style="--mc:var(--green)"></i><div><div class="c-label">Telefon</div><div class="c-val">+90 501 335 89 46</div></div></div>
+        <div class="c-method"><i class="fa-solid fa-location-dot" style="--mc:var(--yellow)"></i><div><div class="c-label">Konum</div><div class="c-val">Kayseri / Türkiye</div></div></div>
+        <div class="c-method"><i class="fa-solid fa-building-columns" style="--mc:var(--blue)"></i><div><div class="c-label">Üniversite</div><div class="c-val">Kayseri Üniversitesi (15 Temmuz Yerleşkesi)</div></div></div>
+        <div class="soc-row">
+          <a href="https://github.com/ghost-ayse" target="_blank" rel="noopener" class="soc" title="GitHub" style="--hover:#333"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/ayşegül-yeter-nalkesen-93240b286/" target="_blank" rel="noopener" class="soc" title="LinkedIn" style="--hover:#0a66c2"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:aysenalkesen7@gmail.com" class="soc" title="Email" style="--hover:var(--g-red)"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Mesaj Gönder</h3>
+        <form id="contactForm" onsubmit="return handleForm(event)">
+          <div class="form-group"><label class="form-label" for="fName">Adınız Soyadınız</label><input id="fName" type="text" class="form-input" placeholder="Örn: Ahmet Yılmaz" required></div>
+          <div class="form-group"><label class="form-label" for="fMail">E-Posta Adresiniz</label><input id="fMail" type="email" class="form-input" placeholder="Örn: ahmet@example.com" required></div>
+          <div class="form-group"><label class="form-label" for="fSub">Konu</label><input id="fSub" type="text" class="form-input" placeholder="GDG / Proje İş Birliği / Merhaba"></div>
+          <div class="form-group"><label class="form-label" for="fMsg">Mesajınız</label><textarea id="fMsg" class="form-textarea" placeholder="Mesajınızı buraya yazabilirsiniz..." required></textarea></div>
+          <button type="submit" class="btn-send"><i class="fa-solid fa-paper-plane"></i> &nbsp;Mesajı Gönder</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="soc-row">
+    <a href="https://github.com/ghost-ayse" target="_blank" rel="noopener" class="soc" style="--hover:#333"><i class="fa-brands fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/ayşegül-yeter-nalkesen-93240b286/" target="_blank" rel="noopener" class="soc" style="--hover:#0a66c2"><i class="fa-brands fa-linkedin-in"></i></a>
+    <a href="mailto:aysenalkesen7@gmail.com" class="soc" style="--hover:var(--g-red)"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+  <p>&copy; <span id="year">2024</span> <a href="#hero">Ayşegül Nalkesen</a> &bull; Disiplin, irade ve <span class="heart">♥</span> ile kodlandı 🥊🚀</p>
+  <div class="footer-g"><i style="background:var(--g-blue)"></i><i style="background:var(--g-red)"></i><i style="background:var(--g-yellow)"></i><i style="background:var(--g-green)"></i></div>
+</footer>
+
+<script>
+// GOOGLE RENKLİ PARÇACIK ARKA PLANI
+(function(){
+  const c = document.getElementById('particles');
+  if (!c || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const x = c.getContext('2d');
+  const colors = ['66,133,244', '234,67,53', '251,188,4', '52,168,83'];
+  let w, h, dpr, pts = [];
+  const mouse = { x: -9999, y: -9999 };
+
+  function init() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = window.innerWidth; h = window.innerHeight;
+    c.width = w * dpr; c.height = h * dpr;
+    c.style.width = w + 'px'; c.style.height = h + 'px';
+    x.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.min(70, Math.floor(w * h / 22000));
+    pts = Array.from({ length: n }, () => ({
+      x: Math.random() * w, y: Math.random() * h,
+      vx: (Math.random() - .5) * .25, vy: (Math.random() - .5) * .25,
+      r: Math.random() * 1.6 + .8,
+      c: colors[Math.floor(Math.random() * 4)]
+    }));
+  }
+
+  function draw() {
+    x.clearRect(0, 0, w, h);
+    for (let i = 0; i < pts.length; i++) {
+      const p = pts[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+
+      const md = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+      const boost = md < 160 ? (1 - md / 160) : 0;
+
+      x.beginPath();
+      x.arc(p.x, p.y, p.r + boost * 1.5, 0, Math.PI * 2);
+      x.fillStyle = `rgba(${p.c},${.35 + boost * .5})`;
+      x.fill();
+
+      for (let j = i + 1; j < pts.length; j++) {
+        const q = pts[j];
+        const d = Math.hypot(p.x - q.x, p.y - q.y);
+        if (d < 120) {
+          x.beginPath();
+          x.moveTo(p.x, p.y); x.lineTo(q.x, q.y);
+          x.strokeStyle = `rgba(${p.c},${(1 - d / 120) * .12})`;
+          x.lineWidth = 1;
+          x.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  window.addEventListener('resize', init);
+  init(); draw();
+})();
+
+// DAKTİLO EFEKTİ (her ifade bir Google rengiyle)
+(function(){
+  const el = document.getElementById('typed');
+  if (!el) return;
+  const box = el.parentElement;
+  const tones = ['#8ab4f8', '#f28b82', '#fdd663', '#81c995'];
+  const ph = [
+    'GDG Teknik Ekip & DevFest Organizatörü 🚀',
+    'Arduino & Siber Güvenlik Eğitmeni 💻',
+    'Yazılım Mühendisliği Öğrencisi ⚙️',
+    'TEINN Kaşifi & Girişimci 💡',
+    'Kick Boks Siyah Kuşak 1. Dan 🥋',
+    'Erasmus Pupil Quality Label 🇪🇺'
+  ];
+  let pi = 0, ci = 0, del = false;
+  box.style.color = tones[0];
+
+  function t() {
+    const p = Array.from(ph[pi]);
+    if (del) { ci--; } else { ci++; }
+    el.textContent = p.slice(0, ci).join('');
+    let s = del ? 25 : 60;
+    if (!del && ci === p.length) { s = 2200; del = true; }
+    else if (del && ci === 0) {
+      del = false;
+      pi = (pi + 1) % ph.length;
+      box.style.color = tones[pi % tones.length];
+      s = 350;
+    }
+    setTimeout(t, s);
+  }
+  t();
+})();
+
+// MOBİL MENÜ
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+if (hamburger && navLinks) {
+  hamburger.onclick = () => {
+    const open = navLinks.classList.toggle('open');
+    hamburger.querySelector('i').className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+  };
+  navLinks.querySelectorAll('.nav-a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.querySelector('i').className = 'fa-solid fa-bars';
+    });
+  });
+}
+
+// KAYDIRINCA BELİRME
+const obs = new IntersectionObserver(e => {
+  e.forEach(x => { if (x.isIntersecting) x.target.classList.add('on'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fi').forEach(e => obs.observe(e));
+
+// AKTİF MENÜ LİNKİ
+window.addEventListener('scroll', () => {
+  let c = '';
+  document.querySelectorAll('section[id]').forEach(s => {
+    if (window.scrollY >= s.offsetTop - 140) c = s.id;
+  });
+  document.querySelectorAll('.nav-a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + c);
+  });
+}, { passive: true });
+
+// YIL
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// FORM: e-posta istemcisini doldurarak açar
+function handleForm(e) {
+  e.preventDefault();
+  const f = e.target;
+  const name = f.querySelector('#fName').value;
+  const mail = f.querySelector('#fMail').value;
+  const sub = f.querySelector('#fSub').value || 'Portfolyo İletişim';
+  const msg = f.querySelector('#fMsg').value;
+  const b = f.querySelector('.btn-send');
+  b.innerHTML = '<i class="fa-solid fa-check"></i> &nbsp;Teşekkürler! E-posta açılıyor...';
+  b.style.background = '#34a853';
+  setTimeout(() => {
+    window.location.href = 'mailto:aysenalkesen7@gmail.com?subject=' + encodeURIComponent(sub) +
+      '&body=' + encodeURIComponent('Gönderen: ' + name + ' (' + mail + ')\n\n' + msg);
+  }, 600);
+  setTimeout(() => {
+    b.innerHTML = '<i class="fa-solid fa-paper-plane"></i> &nbsp;Mesajı Gönder';
+    b.style.background = '';
+    f.reset();
+  }, 3000);
+  return false;
+}
+</script>
+</body>
+</html>
